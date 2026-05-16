@@ -1,0 +1,30 @@
+﻿---
+import data from './ProductShowcase.content.json';
+---
+<!-- SECTION: ProductShowcase | Edit content.json for copy, edit this file for layout -->
+<section class="py-16 bg-gray-50" id="products">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="bg-gray-200 rounded-xl h-80 flex items-center justify-center text-gray-500 text-sm order-2 lg:order-1 border border-gray-300">
+        [{data.imagePlaceholder}]
+      </div>
+
+      <div class="order-1 lg:order-2">
+        <h2 class="text-3xl font-black text-[#1B2D4B] mb-4 uppercase">{data.headline}</h2>
+        <p class="text-[#3B3B3B] leading-relaxed mb-6">{data.subheadline}</p>
+        <ul class="space-y-3 mb-8">
+          {data.features.map((feature) => (
+            <li class="flex items-center gap-3 text-[#3B3B3B]">
+              <span class="text-[#B08A4E] font-black">OK</span>
+              {feature}
+            </li>
+          ))}
+        </ul>
+        <a href="#contact" class="inline-block bg-[#B08A4E] text-white font-bold px-6 py-3 rounded hover:bg-[#96733f] transition-colors">
+          {data.cta}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+

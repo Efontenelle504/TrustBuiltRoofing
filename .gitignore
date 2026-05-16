@@ -1,0 +1,15 @@
+node_modules
+dist
+.env
+.astro
+/*.png
+/*.err
+/*.log
+/served-dom.html
+/privacy/
+/roof-leak-repair/
+/roof-repair/
+/roof-replacement/
+/service-areas/
+/storm-damage-roofing/
+/thank-you/

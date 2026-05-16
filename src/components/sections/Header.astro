@@ -1,0 +1,43 @@
+﻿---
+import data from './Header.content.json';
+---
+<!-- SECTION: Header | Edit content.json for copy, edit this file for layout -->
+<header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="/" class="leading-none">
+        <span class="block text-2xl font-black text-[#1B2D4B] tracking-tight">{data.logo}</span>
+        <span class="block text-[10px] font-bold text-[#B08A4E] tracking-[0.42em]">{data.descriptor}</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6">
+        {data.nav.map((item) => (
+          <div class="relative group">
+            <a href={item.label === 'Contact' ? '#contact' : '#services'} class="text-sm font-semibold text-[#3B3B3B] hover:text-[#B08A4E] transition-colors">
+              {item.label}
+            </a>
+            {item.children.length > 0 && (
+              <div class="absolute top-full left-0 hidden group-hover:block bg-white border border-gray-100 shadow-lg rounded-md py-2 min-w-[190px]">
+                {item.children.map((child) => (
+                  <a href="#contact" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#B08A4E]">
+                    {child}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <a href={`tel:${data.phone}`} class="hidden sm:block text-sm font-bold text-[#1B2D4B] hover:text-[#B08A4E]">
+          {data.phoneDisplay}
+        </a>
+        <a href="#contact" class="hidden sm:inline-block bg-[#B08A4E] text-white text-sm font-bold px-4 py-2 rounded hover:bg-[#96733f] transition-colors whitespace-nowrap">
+          {data.cta}
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+

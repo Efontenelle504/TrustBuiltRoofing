@@ -1,0 +1,11 @@
+{
+  "headline": "Offers, Warranty, and Financing Go Here When Verified",
+  "subheadline": "This section is intentionally neutral until Trust Built Roofing supplies real terms, disclosures, and approval language.",
+  "options": [
+    { "label": "Offer Slot", "description": "Add a seasonal offer only after the exact dates and conditions are confirmed." },
+    { "label": "Warranty Slot", "description": "Add warranty language only after the real coverage and exclusions are verified." },
+    { "label": "Financing Slot", "description": "Add financing only with lender, approval, and disclosure language." }
+  ],
+  "cta": "Ask About Current Options",
+  "disclaimer": "Draft content. Replace with verified business terms before publishing offer, warranty, or financing claims."
+}

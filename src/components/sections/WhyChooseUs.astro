@@ -1,0 +1,32 @@
+﻿---
+import data from './WhyChooseUs.content.json';
+---
+<!-- SECTION: WhyChooseUs | Edit content.json for copy, edit this file for layout -->
+<section class="py-16 bg-gray-50" id="why">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <h2 class="text-3xl font-bold text-center text-[#1B2D4B] mb-12">{data.headline}</h2>
+
+    <!-- Three-column pillars -->
+    <div class="grid sm:grid-cols-3 gap-8 mb-16">
+      {data.pillars.map((p) => (
+        <div class="text-center p-6">
+          <div class="text-2xl font-black text-[#B08A4E] mb-4">{p.icon}</div>
+          <h3 class="text-lg font-bold text-[#1B2D4B] mb-2">{p.title}</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">{p.description}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Brand statement -->
+    <div class="bg-[#1B2D4B] text-white rounded-xl p-10 text-center">
+      <h2 class="text-2xl font-bold mb-6">{data.headline2}</h2>
+      <a href="#contact" class="inline-block bg-[#B08A4E] text-white font-bold px-6 py-3 rounded hover:bg-[#96733f] transition-colors">
+        {data.cta}
+      </a>
+    </div>
+
+  </div>
+</section>
+
+

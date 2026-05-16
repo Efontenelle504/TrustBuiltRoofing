@@ -1,0 +1,28 @@
+{
+  "logo": "Trust Built Roofing Co.",
+  "tagline": "Built on trust. Backed by experience.",
+  "phone": "5042857707",
+  "phoneDisplay": "(504) 285-7707",
+  "email": "info@trustbuiltroofing.com",
+  "copyright": "Copyright 2026 Trust Built Roofing Co. | All rights reserved",
+  "columns": [
+    {
+      "heading": "Services",
+      "links": ["Roof Repair", "Roof Replacement", "Storm Assessment", "Residential Roofing"]
+    },
+    {
+      "heading": "Service Area",
+      "links": ["South Louisiana", "Mississippi", "Nearby Communities", "Estimate Requests"]
+    },
+    {
+      "heading": "Proof To Add",
+      "links": ["Reviews", "Project Photos", "Credentials", "Warranty Details"]
+    },
+    {
+      "heading": "Contact",
+      "links": ["Call", "Email", "Free Estimate", "FAQ"]
+    }
+  ],
+  "legal": ["Privacy Policy", "Terms of Service"],
+  "social": ["Facebook", "Instagram", "Google"]
+}

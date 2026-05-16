@@ -1,0 +1,29 @@
+{
+  "headline": "Roofing Services",
+  "cards": [
+    {
+      "title": "Roof Repair",
+      "description": "For active leaks, missing shingles, flashing issues, or visible damage that needs a focused repair conversation.",
+      "cta": "Start Repair Request",
+      "items": ["Leak concerns", "Missing or lifted shingles", "Flashing and roof detail issues"]
+    },
+    {
+      "title": "Roof Replacement",
+      "description": "For aging roofs, recurring problems, or homeowners comparing the cost and timing of a full replacement.",
+      "cta": "Plan Replacement",
+      "items": ["Aging roof systems", "Recurring roof problems", "Replacement estimate path"]
+    },
+    {
+      "title": "Storm Assessment",
+      "description": "For wind, hail, heavy rain, or sudden damage concerns that need review and next-step clarity.",
+      "cta": "Review Storm Concern",
+      "items": ["Wind and rain concerns", "Visible storm damage", "Leak-after-storm questions"]
+    },
+    {
+      "title": "Residential Roofing",
+      "description": "For homeowners who want practical guidance before deciding whether repair, replacement, or inspection is the right next step.",
+      "cta": "Ask a Roofing Question",
+      "items": ["Estimate requests", "Roof condition questions", "South Louisiana / Mississippi"]
+    }
+  ]
+}

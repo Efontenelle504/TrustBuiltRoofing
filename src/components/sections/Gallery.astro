@@ -1,0 +1,24 @@
+﻿---
+import data from './Gallery.content.json';
+---
+<!-- SECTION: Gallery | Edit content.json for copy, edit this file for layout -->
+<section class="py-16 bg-white" id="gallery">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl font-bold text-center text-[#1B2D4B] mb-3">{data.headline}</h2>
+    <p class="text-gray-500 text-center mb-10">{data.subheadline}</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {data.panels.map((panel) => (
+        <div class="group relative bg-gray-100 rounded-xl h-56 flex items-end overflow-hidden cursor-pointer hover:shadow-lg transition-shadow">
+          <div class="absolute inset-0 flex items-center justify-center text-gray-400 text-xs text-center px-3">
+            [{panel.imagePlaceholder}]
+          </div>
+          <div class="relative w-full bg-gradient-to-t from-gray-900/80 to-transparent p-3">
+            <p class="text-white text-sm font-semibold">{panel.label}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+

@@ -1,0 +1,23 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Trust Built Roofing',
+  description = 'Roof repair, replacement, storm concerns, and estimate requests.'
+} = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body class="font-sans bg-white text-[#3B3B3B] overflow-x-hidden">
+    <slot />
+  </body>
+</html>

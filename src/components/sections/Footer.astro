@@ -1,0 +1,51 @@
+﻿---
+import data from './Footer.content.json';
+---
+<!-- SECTION: Footer | Edit content.json for copy, edit this file for layout -->
+<footer class="bg-[#1B2D4B] text-gray-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+
+    <!-- Top row -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+
+      <!-- Brand col -->
+      <div class="lg:col-span-1">
+        <p class="text-white text-xl font-bold mb-2">{data.logo}</p>
+        <p class="text-gray-400 text-sm leading-relaxed mb-4">{data.tagline}</p>
+        <a href={`tel:${data.phone}`} class="text-[#D4B16A] font-semibold hover:text-[#E0C27A]">{data.phoneDisplay}</a>
+        <a href={`mailto:${data.email}`} class="block text-gray-400 text-sm mt-2 hover:text-white">{data.email}</a>
+        <div class="flex gap-3 mt-4">
+          {data.social.map((s) => (
+            <a href="#" class="bg-[#2F4262] hover:bg-gray-600 text-xs px-2 py-1 rounded transition-colors">{s}</a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Link columns -->
+      {data.columns.map((col) => (
+        <div>
+          <p class="text-white font-semibold text-sm mb-3">{col.heading}</p>
+          <ul class="space-y-2">
+            {col.links.map((link) => (
+              <li><a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">{link}</a></li>
+            ))}
+          </ul>
+        </div>
+      ))}
+
+    </div>
+
+    <!-- Bottom row -->
+    <div class="border-t border-white/15 pt-6 flex flex-col sm:flex-row justify-between items-center gap-3">
+      <p class="text-gray-500 text-xs">{data.copyright}</p>
+      <div class="flex gap-4">
+        {data.legal.map((l) => (
+          <a href="#" class="text-gray-500 hover:text-gray-300 text-xs transition-colors">{l}</a>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+

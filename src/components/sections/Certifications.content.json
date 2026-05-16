@@ -1,0 +1,10 @@
+{
+  "headline": "Proof-ready trust slots",
+  "badges": [
+    { "name": "License wording", "imagePlaceholder": "Add verified detail" },
+    { "name": "Insurance wording", "imagePlaceholder": "Add verified detail" },
+    { "name": "Manufacturer credentials", "imagePlaceholder": "Add verified detail" },
+    { "name": "Real project photos", "imagePlaceholder": "Add owned photos" },
+    { "name": "Verified reviews", "imagePlaceholder": "Add sources" }
+  ]
+}

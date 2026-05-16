@@ -1,0 +1,23 @@
+﻿---
+import data from './Certifications.content.json';
+---
+<!-- SECTION: Certifications | Edit content.json for copy, edit this file for layout -->
+<section class="py-10 bg-white border-t border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <p class="text-center text-xs font-semibold uppercase tracking-widest text-gray-400 mb-6">
+      {data.headline}
+    </p>
+    <div class="flex flex-wrap justify-center items-center gap-8">
+      {data.badges.map((badge) => (
+        <div class="flex flex-col items-center gap-1">
+          <div class="bg-gray-100 rounded-lg w-24 h-14 flex items-center justify-center text-gray-400 text-xs text-center px-1">
+            {badge.imagePlaceholder}
+          </div>
+          <span class="text-gray-500 text-xs font-medium">{badge.name}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+

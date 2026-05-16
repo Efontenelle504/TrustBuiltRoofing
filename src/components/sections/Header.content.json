@@ -1,0 +1,14 @@
+{
+  "logo": "TRUST BUILT",
+  "descriptor": "ROOFING CO.",
+  "phone": "5042857707",
+  "phoneDisplay": "(504) 285-7707",
+  "cta": "Free Estimate",
+  "nav": [
+    { "label": "Services", "children": ["Roof Repair", "Roof Replacement", "Storm Assessment"] },
+    { "label": "Warning Signs", "children": [] },
+    { "label": "Process", "children": [] },
+    { "label": "FAQ", "children": [] },
+    { "label": "Contact", "children": [] }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "promos": [
+    {
+      "tag": "Most urgent",
+      "headline": "Roof Leak or Repair",
+      "subheadline": "For active leaks, missing shingles, flashing issues, or visible damage that needs a focused repair discussion.",
+      "cta": "Start Repair Request",
+      "imagePlaceholder": "Repair concern photo"
+    },
+    {
+      "tag": "Big decision",
+      "headline": "Roof Replacement",
+      "subheadline": "For aging roofs, recurring issues, or homeowners comparing the cost and timing of replacement.",
+      "cta": "Plan Replacement",
+      "imagePlaceholder": "Replacement roof photo"
+    },
+    {
+      "tag": "Weather concern",
+      "headline": "Storm or Leak Assessment",
+      "subheadline": "For wind, hail, heavy rain, or sudden damage concerns that need review and next-step clarity.",
+      "cta": "Review Storm Concern",
+      "imagePlaceholder": "Storm assessment photo"
+    }
+  ]
+}

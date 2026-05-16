@@ -1,0 +1,41 @@
+﻿---
+// BaseLayout.astro - HTML shell with Tailwind, accepts page title + description.
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Trust Built Roofing',
+  description = 'Roof repair, replacement, storm concerns, and estimate requests for South Louisiana and Mississippi.'
+} = Astro.props;
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Trust Built Roofing',
+  url: 'https://trustbuiltroofing.com/',
+  telephone: '+15042857707',
+  email: 'info@trustbuiltroofing.com',
+  areaServed: 'South Louisiana / Mississippi'
+};
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href="https://trustbuiltroofing.com/" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content="https://trustbuiltroofing.com/" />
+    <meta property="og:type" content="website" />
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    <title>{title}</title>
+  </head>
+  <body class="font-sans bg-white text-[#3B3B3B] antialiased overflow-x-hidden">
+    <slot />
+  </body>
+</html>
+

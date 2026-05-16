@@ -1,0 +1,50 @@
+﻿---
+import data from './ContactCTA.content.json';
+---
+<!-- SECTION: ContactCTA | Edit content.json for copy, edit this file for layout -->
+<section class="py-16 bg-gray-50" id="contact">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl font-bold text-center text-[#1B2D4B] mb-3">{data.headline}</h2>
+    <p class="text-gray-500 text-center mb-2">{data.subheadline}</p>
+    <p class="text-center text-[#B08A4E] font-bold mb-10">
+      <a href={`tel:${data.phone}`} class="hover:underline">{data.phoneDisplay}</a>
+    </p>
+
+    <!-- Lead form -->
+    <form class="bg-white border border-gray-200 rounded-xl p-8 shadow-sm space-y-5">
+      <div class="grid sm:grid-cols-2 gap-5">
+        {data.formFields.filter(f => f.type !== 'select').map((field) => (
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">
+              {field.label}{field.required && <span class="text-[#B08A4E]">*</span>}
+            </label>
+            <input
+              type={field.type}
+              name={field.name}
+              required={field.required}
+              class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#B08A4E] focus:border-transparent"
+            />
+          </div>
+        ))}
+      </div>
+      {data.formFields.filter(f => f.type === 'select').map((field) => (
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+              {field.label}{field.required && <span class="text-[#B08A4E]">*</span>}
+          </label>
+          <select name={field.name} required={field.required} class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#B08A4E] focus:border-transparent">
+            <option value="">Select a service...</option>
+            {field.options && field.options.map((opt) => (
+              <option value={opt}>{opt}</option>
+            ))}
+          </select>
+        </div>
+      ))}
+      <button type="submit" class="w-full bg-[#B08A4E] text-white font-bold py-3 rounded-md hover:bg-[#96733f] transition-colors">
+        {data.cta}
+      </button>
+    </form>
+  </div>
+</section>
+
+

@@ -1,0 +1,26 @@
+﻿---
+import data from './Financing.content.json';
+---
+<!-- SECTION: Financing | Edit content.json for copy, edit this file for layout -->
+<section class="py-16 bg-[#B08A4E] text-white" id="financing">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-3xl font-bold mb-3">{data.headline}</h2>
+    <p class="text-[#F3E5C3] text-lg mb-10 max-w-2xl mx-auto">{data.subheadline}</p>
+
+    <div class="grid sm:grid-cols-3 gap-6 mb-10">
+      {data.options.map((opt) => (
+        <div class="bg-white/10 rounded-xl p-6 backdrop-blur-sm">
+          <p class="text-2xl font-extrabold mb-2">{opt.label}</p>
+          <p class="text-[#F3E5C3] text-sm leading-relaxed">{opt.description}</p>
+        </div>
+      ))}
+    </div>
+
+    <a href="#contact" class="inline-block bg-white text-[#B08A4E] font-bold px-8 py-3 rounded hover:bg-[#F4EFE5] transition-colors mb-4">
+      {data.cta}
+    </a>
+    <p class="text-[#E0C27A] text-xs max-w-lg mx-auto mt-4">{data.disclaimer}</p>
+  </div>
+</section>
+
+

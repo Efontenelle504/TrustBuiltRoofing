@@ -1,0 +1,36 @@
+﻿---
+import data from './Hero.content.json';
+---
+<!-- SECTION: Hero | Edit content.json for copy, edit this file for layout -->
+<section class="bg-[#1B2D4B] text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <p class="inline-block bg-[#B08A4E] text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded mb-6">
+          {data.trustBadge}
+        </p>
+        <h1 class="text-xl sm:text-4xl lg:text-6xl font-black leading-tight mb-6 uppercase break-words max-w-full">
+          {data.headline}
+        </h1>
+        <p class="text-slate-200 text-lg mb-8 leading-relaxed">
+          {data.subheadline}
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="#contact" class="w-full sm:w-auto text-center bg-[#B08A4E] text-white font-bold px-6 py-3 rounded hover:bg-[#96733f] transition-colors">
+            {data.primaryCta}
+          </a>
+          <a href="#services" class="w-full sm:w-auto text-center border border-white text-white font-bold px-6 py-3 rounded hover:bg-white hover:text-[#1B2D4B] transition-colors">
+            {data.secondaryCta}
+          </a>
+        </div>
+      </div>
+
+      <div class="relative bg-[#223958] rounded-xl h-72 lg:h-96 flex items-center justify-center text-slate-300 text-xs sm:text-sm overflow-hidden px-5 text-center break-words">
+        <div class="absolute inset-x-10 bottom-12 h-2 bg-[#B08A4E] skew-x-[-28deg]"></div>
+        <div class="absolute inset-x-16 bottom-24 h-2 bg-white/20 skew-x-[-28deg]"></div>
+        <span class="relative">[{data.imagePlaceholder}]</span>
+      </div>
+    </div>
+  </div>
+</section>
+

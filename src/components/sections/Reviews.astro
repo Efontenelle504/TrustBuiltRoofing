@@ -1,0 +1,37 @@
+﻿---
+import data from './Reviews.content.json';
+---
+<!-- SECTION: Reviews | Edit content.json for copy, edit this file for layout -->
+<section class="py-16 bg-white" id="reviews">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-3 bg-gray-50 border border-gray-200 rounded-full px-6 py-3 mb-4">
+        <span class="text-3xl font-black text-[#1B2D4B]">{data.ratingScore}</span>
+        <span class="text-[#B08A4E] text-xl">*****</span>
+        <span class="text-gray-500 text-sm">{data.reviewCount} Reviews</span>
+      </div>
+      <h2 class="text-3xl font-black text-[#1B2D4B] uppercase">{data.headline}</h2>
+      <div class="flex justify-center gap-4 mt-3 text-sm text-gray-400">
+        {data.platforms.map((p) => <span class="border border-gray-200 px-3 py-1 rounded">{p}</span>)}
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 mb-10">
+      {data.testimonials.map((t) => (
+        <div class="border border-gray-200 rounded-xl p-6">
+          <div class="text-[#B08A4E] mb-3">{"*".repeat(t.rating)}</div>
+          <p class="text-[#3B3B3B] text-sm leading-relaxed mb-4">"{t.text}"</p>
+          <p class="font-bold text-[#1B2D4B] text-sm">{t.name}</p>
+          <p class="text-gray-400 text-xs">{t.location}</p>
+        </div>
+      ))}
+    </div>
+
+    <div class="text-center">
+      <a href="#contact" class="inline-block border border-[#B08A4E] text-[#B08A4E] font-semibold px-6 py-2.5 rounded hover:bg-[#B08A4E] hover:text-white transition-colors">
+        {data.cta}
+      </a>
+    </div>
+  </div>
+</section>
+

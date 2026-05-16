@@ -1,0 +1,10 @@
+{
+  "headline": "Project Gallery",
+  "subheadline": "Add real Trust Built Roofing project photos here when owned media is ready.",
+  "panels": [
+    { "label": "Roof Repair", "imagePlaceholder": "Owned repair photo" },
+    { "label": "Roof Replacement", "imagePlaceholder": "Owned replacement photo" },
+    { "label": "Storm Concern", "imagePlaceholder": "Owned storm project photo" },
+    { "label": "Roof Detail", "imagePlaceholder": "Owned detail photo" }
+  ]
+}

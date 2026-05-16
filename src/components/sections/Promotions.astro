@@ -1,0 +1,31 @@
+﻿---
+import data from './Promotions.content.json';
+---
+<!-- SECTION: Promotions | Edit content.json for copy, edit this file for layout -->
+<section class="py-16 bg-[#1B2D4B] text-white" id="promotions">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid md:grid-cols-3 gap-6">
+      {data.promos.map((promo) => (
+        <div class="bg-[#243858] rounded-xl overflow-hidden flex flex-col">
+          <!-- Image placeholder -->
+          <div class="bg-[#2F4262] h-44 flex items-center justify-center text-gray-500 text-sm">
+            [{promo.imagePlaceholder}]
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <span class="text-[#D4B16A] text-xs font-bold uppercase tracking-widest mb-2">{promo.tag}</span>
+            <h3 class="text-xl font-bold mb-2">{promo.headline}</h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-5 flex-1">{promo.subheadline}</p>
+            <a href="#contact" class="inline-block bg-[#B08A4E] text-white font-bold text-sm px-5 py-2.5 rounded hover:bg-[#96733f] transition-colors text-center">
+              {promo.cta}
+            </a>
+            {promo.disclaimer && (
+              <p class="text-gray-500 text-xs mt-3">{promo.disclaimer}</p>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+

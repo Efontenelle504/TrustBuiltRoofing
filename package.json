@@ -1,0 +1,18 @@
+{
+  "name": "trustbuiltroofing-landing",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && node scripts/sync-static-site.mjs && node scripts/build-static-pages.mjs",
+    "preview": "astro preview",
+    "edit": "node scripts/edit-section.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.27.0",
+    "@astrojs/tailwind": "^5.1.0",
+    "astro": "^6.3.2",
+    "dotenv": "^16.4.0",
+    "tailwindcss": "^3.4.0"
+  }
+}

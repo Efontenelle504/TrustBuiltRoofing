@@ -1,0 +1,27 @@
+{
+  "headline": "Real Proof Belongs Here",
+  "ratingScore": "--",
+  "reviewCount": "Add verified",
+  "platforms": ["Google", "Facebook", "BBB"],
+  "cta": "Add Review Sources",
+  "testimonials": [
+    {
+      "name": "Review Slot",
+      "location": "Verified source required",
+      "rating": 5,
+      "text": "Replace this placeholder with a real customer review only after the source and permission are verified."
+    },
+    {
+      "name": "Project Photo Slot",
+      "location": "Owned media required",
+      "rating": 5,
+      "text": "Use this card for a real roof repair, replacement, or storm project once photos and details are supplied."
+    },
+    {
+      "name": "Credential Slot",
+      "location": "Documentation required",
+      "rating": 5,
+      "text": "Use this card for license, insurance, manufacturer, warranty, or financing proof after verification."
+    }
+  ]
+}

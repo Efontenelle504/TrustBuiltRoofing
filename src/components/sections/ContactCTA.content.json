@@ -1,0 +1,16 @@
+{
+  "headline": "Get Your Free Roof Estimate",
+  "subheadline": "Tell Trust Built Roofing what you are seeing. A leak, missing shingles, storm damage, or an aging roof can start with a simple request.",
+  "cta": "Request Estimate",
+  "phone": "5042857707",
+  "phoneDisplay": "(504) 285-7707",
+  "email": "info@trustbuiltroofing.com",
+  "formFields": [
+    { "name": "firstName", "label": "First Name", "type": "text", "required": true },
+    { "name": "lastName", "label": "Last Name", "type": "text", "required": true },
+    { "name": "email", "label": "Email Address", "type": "email", "required": false },
+    { "name": "phone", "label": "Phone Number", "type": "tel", "required": true },
+    { "name": "zip", "label": "ZIP Code", "type": "text", "required": false },
+    { "name": "service", "label": "Service Needed", "type": "select", "required": true, "options": ["Roof Repair", "Roof Replacement", "Storm or Leak Assessment", "General Roofing Question"] }
+  ]
+}
