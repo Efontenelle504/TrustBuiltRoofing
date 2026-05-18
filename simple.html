@@ -124,19 +124,12 @@
     }
 
     .header {
-      position: sticky;
-      top: 0;
+      position: relative;
       z-index: 20;
       background: rgba(255, 255, 255, 0.96);
       border-bottom: 1px solid rgba(27, 45, 75, 0.1);
       backdrop-filter: blur(14px);
-      transition: box-shadow 180ms ease, background 180ms ease, border-color 180ms ease;
-    }
-
-    .header.is-scrolled {
-      background: rgba(255, 255, 255, 0.98);
-      border-color: rgba(27, 45, 75, 0.16);
-      box-shadow: 0 14px 34px rgba(11, 23, 41, 0.1);
+      box-shadow: none;
     }
 
     .nav {
@@ -196,30 +189,6 @@
       letter-spacing: 0.42em;
       text-transform: uppercase;
       transition: font-size 180ms ease, letter-spacing 180ms ease;
-    }
-
-    .header.is-scrolled .nav {
-      min-height: 58px;
-    }
-
-    .header.is-scrolled .brand {
-      gap: 10px;
-      min-width: 214px;
-    }
-
-    .header.is-scrolled .brand-mark {
-      width: 38px;
-      height: 27px;
-      gap: 5px;
-    }
-
-    .header.is-scrolled .brand-text strong {
-      font-size: 1.6rem;
-    }
-
-    .header.is-scrolled .brand-text small {
-      font-size: 0.62rem;
-      letter-spacing: 0.34em;
     }
 
     .nav-links {
@@ -3613,7 +3582,6 @@
     (function () {
       var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       var supportsObserver = "IntersectionObserver" in window;
-      var header = document.querySelector(".header");
       var mobileCta = document.querySelector(".mobile-cta");
       var visibleCtaZones = new Set();
       var formHasFocus = false;
@@ -3622,14 +3590,6 @@
         if (!mobileCta) return;
         mobileCta.classList.toggle("is-hidden", visibleCtaZones.size > 0 || formHasFocus);
       }
-
-      function syncHeader() {
-        if (!header) return;
-        header.classList.toggle("is-scrolled", window.scrollY > 12);
-      }
-
-      syncHeader();
-      window.addEventListener("scroll", syncHeader, { passive: true });
 
       if (mobileCta && supportsObserver) {
         var hiddenZones = Array.prototype.slice.call(document.querySelectorAll(".hero, #contact, .footer"));
