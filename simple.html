@@ -1941,6 +1941,7 @@
       height: 100%;
       min-height: inherit;
       object-fit: cover;
+      object-position: 36% center;
     }
 
     .area-list {
@@ -1949,16 +1950,36 @@
       gap: 14px;
     }
 
-    .area-list div {
+    .area-list a {
+      display: grid;
+      min-height: 172px;
+      align-content: space-between;
+      gap: 14px;
       padding: 20px;
       background: var(--white);
       border: 1px solid var(--line);
       border-radius: 5px;
       color: var(--muted);
+      transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+    }
+
+    .area-list a:hover {
+      transform: translateY(-3px);
+      border-color: rgba(176, 138, 78, 0.55);
+      box-shadow: 0 18px 34px rgba(0, 0, 0, 0.16);
     }
 
     .area-list b {
+      display: block;
+      margin-bottom: 6px;
       color: var(--navy);
+    }
+
+    .area-list span {
+      color: var(--bronze);
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
     }
 
     .faq {
@@ -3336,11 +3357,23 @@
           </figcaption>
         </figure>
 
-        <div class="area-list">
-          <div><b>South Louisiana</b><br />Roof repair and replacement estimates.</div>
-          <div><b>Mississippi</b><br />Storm, leak, and roof system help.</div>
-          <div><b>Residential roofing</b><br />Clear help for homeowners.</div>
-          <div><b>Address confirmation</b><br />Call to confirm service for your property.</div>
+        <div class="area-list" aria-label="Service area actions">
+          <a href="#contact">
+            <div><b>Confirm Your Address</b>Send your city or ZIP so Trust Built can confirm service and schedule the right estimate.</div>
+            <span>Use the form</span>
+          </a>
+          <a href="tel:5042857707">
+            <div><b>Active Leak Or Storm Issue</b>If water is getting in or damage happened recently, call before it becomes interior damage.</div>
+            <span>Call now</span>
+          </a>
+          <a href="#contact">
+            <div><b>Send Roof Photos</b>Upload leak, shingle, flashing, ceiling stain, or storm damage photos to make the callback more useful.</div>
+            <span>Attach photos</span>
+          </a>
+          <a href="#guide">
+            <div><b>Choose The Right Estimate</b>Use the roof concern guide to separate repair, replacement, storm damage, and general roof questions.</div>
+            <span>Open guide</span>
+          </a>
         </div>
       </div>
     </section>
@@ -3650,7 +3683,7 @@
       }
 
       var revealItems = Array.prototype.slice.call(document.querySelectorAll(
-        ".proof-item, .guide-intro, .guide-tool, .proof-copy, .proof-tile, .answer-item, .service-card, .promo-card, .photo-frame, .check, .system-note, .card, .process-step, .area-card, .area-photo, .area-list > div, details, .contact-card, .form-card"
+        ".proof-item, .guide-intro, .guide-tool, .proof-copy, .proof-tile, .answer-item, .service-card, .promo-card, .photo-frame, .check, .system-note, .card, .process-step, .area-card, .area-photo, .area-list > a, details, .contact-card, .form-card"
       ));
 
       revealItems.forEach(function (item) {
