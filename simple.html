@@ -405,30 +405,45 @@
     }
 
     .hero-proof {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      max-width: 680px;
-      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      max-width: 620px;
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.16);
     }
 
     .hero-proof span {
-      min-height: 74px;
-      padding: 15px 15px 13px;
-      color: rgba(255, 255, 255, 0.88);
-      background: rgba(11, 23, 41, 0.58);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      border-left: 4px solid var(--bronze);
-      border-radius: var(--radius);
+      position: relative;
+      min-height: 0;
+      padding: 0;
+      color: rgba(255, 255, 255, 0.74);
+      background: transparent;
+      border: 0;
+      border-radius: 0;
       font-size: 0.83rem;
       font-weight: 800;
-      line-height: 1.35;
-      backdrop-filter: blur(8px);
+      line-height: 1.25;
+    }
+
+    .hero-proof span + span {
+      padding-left: 18px;
+    }
+
+    .hero-proof span + span::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.2em;
+      bottom: 0.2em;
+      width: 1px;
+      background: rgba(255, 255, 255, 0.18);
     }
 
     .hero-proof b {
-      display: block;
-      margin-bottom: 4px;
+      display: inline;
+      margin: 0 5px 0 0;
       color: var(--bronze-light);
       font-size: 0.68rem;
       letter-spacing: 0.12em;
@@ -438,7 +453,7 @@
     .estimate-card {
       align-self: center;
       min-width: 0;
-      padding: 24px;
+      padding: 22px;
       background: rgba(255, 255, 255, 0.97);
       color: var(--ink);
       border-radius: var(--radius);
@@ -861,108 +876,465 @@
 
     .local-proof {
       background:
-        linear-gradient(180deg, var(--paper), var(--white));
+        radial-gradient(circle at 18% 16%, rgba(176, 138, 78, 0.1), transparent 30%),
+        linear-gradient(180deg, #fbfaf7, var(--white));
     }
 
-    .proof-story {
+    .proof-board {
       display: grid;
-      grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
-      gap: 24px;
-      align-items: stretch;
+      gap: 28px;
     }
 
-    .proof-copy {
-      padding: 30px;
-      color: var(--white);
-      background:
-        linear-gradient(135deg, rgba(27, 45, 75, 0.98), rgba(11, 23, 41, 0.98));
-      border-radius: var(--radius);
-      border-left: 5px solid var(--bronze);
-    }
-
-    .proof-copy h2 {
-      color: var(--white);
-    }
-
-    .proof-copy p:not(.kicker) {
-      margin: 14px 0 0;
-      color: rgba(255, 255, 255, 0.74);
-    }
-
-    .proof-metrics {
+    .proof-stage {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: minmax(330px, 0.82fr) minmax(0, 1.18fr);
+      gap: 46px;
+      align-items: center;
+    }
+
+    .proof-copy-panel {
+      max-width: 510px;
+    }
+
+    .proof-eyebrow {
+      display: flex;
+      align-items: center;
       gap: 12px;
+      color: var(--bronze);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .proof-eyebrow i {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      color: var(--bronze);
+      border: 2px solid currentColor;
+      border-radius: 999px;
+      font-style: normal;
+    }
+
+    .proof-headline {
       margin-top: 24px;
+      max-width: 520px;
+      color: var(--navy);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 3.72rem;
+      font-weight: 900;
+      line-height: 1.04;
+      letter-spacing: 0;
+      text-transform: none;
     }
 
-    .proof-metrics div {
-      padding: 16px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.13);
-      border-radius: 5px;
+    .proof-headline span {
+      color: var(--bronze);
     }
 
-    .proof-metrics b {
-      display: block;
+    .proof-copy-panel > p {
+      max-width: 520px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.62;
+    }
+
+    .proof-rule {
+      width: 54px;
+      height: 2px;
+      margin: 24px 0;
+      background: var(--bronze);
+    }
+
+    .proof-mini-list {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin: 0 0 28px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .proof-mini-list li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--navy);
+      font-size: 0.94rem;
+      font-weight: 700;
+    }
+
+    .proof-mini-list li::before {
+      content: "✓";
+      width: 22px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      color: var(--bronze);
+      border: 1px solid currentColor;
+      border-radius: 999px;
+      font-size: 0.75rem;
+    }
+
+    .proof-copy-panel .btn {
+      min-width: 360px;
+      justify-content: flex-start;
+      gap: 14px;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+      box-shadow: 0 18px 34px rgba(11, 23, 41, 0.18);
+    }
+
+    .proof-copy-panel .btn::before {
+      content: "▣";
       color: var(--bronze-light);
+    }
+
+    .proof-cta-note {
+      margin: 14px 0 0 28px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .report-visual {
+      position: relative;
+      min-height: 780px;
+      overflow: hidden;
+      border-radius: 8px;
+      background: var(--navy);
+      box-shadow: 0 28px 72px rgba(11, 23, 41, 0.16);
+      --tilt-x: 0deg;
+      --tilt-y: 0deg;
+    }
+
+    .report-visual > img {
+      width: 100%;
+      height: 100%;
+      min-height: 780px;
+      object-fit: cover;
+      filter: saturate(0.94) contrast(1.02);
+    }
+
+    .report-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(11, 23, 41, 0.16), transparent 40%),
+        linear-gradient(180deg, transparent 58%, rgba(11, 23, 41, 0.18));
+      pointer-events: none;
+    }
+
+    .roof-report-card {
+      position: absolute;
+      z-index: 1;
+      top: 34px;
+      left: 18%;
+      right: 8%;
+      padding: 24px;
+      color: var(--navy);
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(27, 45, 75, 0.12);
+      border-radius: 14px;
+      box-shadow: 0 24px 70px rgba(11, 23, 41, 0.18);
+      backdrop-filter: blur(8px);
+      transform: perspective(1000px) rotateX(var(--tilt-y)) rotateY(var(--tilt-x));
+      transform-origin: center;
+      transition: transform 220ms ease, box-shadow 220ms ease;
+    }
+
+    .report-visual:hover .roof-report-card {
+      box-shadow: 0 30px 86px rgba(11, 23, 41, 0.24);
+    }
+
+    .report-head {
+      display: grid;
+      grid-template-columns: 44px minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .report-icon {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      color: var(--bronze-light);
+      background: var(--navy);
+      border-radius: 6px;
       font-size: 1.2rem;
     }
 
-    .proof-gallery {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
-      gap: 14px;
+    .report-head h3 {
+      color: var(--navy);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.24rem;
+      line-height: 1;
     }
 
-    .proof-tile {
+    .report-head p,
+    .report-date {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .report-photo {
       position: relative;
-      min-height: 260px;
+      min-height: 170px;
       overflow: hidden;
-      border-radius: var(--radius);
-      background: var(--navy);
-      box-shadow: 0 18px 42px rgba(11, 23, 41, 0.1);
+      border-radius: 6px;
     }
 
-    .proof-tile.large {
-      grid-row: span 2;
-    }
-
-    .proof-tile img {
+    .report-photo img {
       width: 100%;
       height: 100%;
-      min-height: inherit;
+      min-height: 170px;
       object-fit: cover;
-      transition: transform 480ms ease, filter 480ms ease;
+      transition: opacity 180ms ease, transform 380ms ease;
     }
 
-    .proof-tile:hover img {
-      transform: scale(1.04);
-      filter: saturate(1.04) contrast(1.03);
+    .report-photo.is-changing img {
+      opacity: 0.38;
+      transform: scale(1.025);
     }
 
-    .proof-caption {
+    .report-pin {
       position: absolute;
-      left: 14px;
-      right: 14px;
-      bottom: 14px;
-      padding: 14px;
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
       color: var(--white);
-      background: rgba(11, 23, 41, 0.86);
+      background: var(--bronze);
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      box-shadow: 0 8px 18px rgba(11, 23, 41, 0.16);
+      font-size: 0.8rem;
+      font-weight: 900;
+      border: 0;
+      cursor: pointer;
+      transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
+    }
+
+    .report-pin span {
+      transform: rotate(45deg);
+    }
+
+    .report-pin:hover,
+    .report-pin.is-active {
+      background: var(--navy);
+      box-shadow: 0 0 0 5px rgba(176, 138, 78, 0.24), 0 12px 24px rgba(11, 23, 41, 0.22);
+      transform: rotate(-45deg) scale(1.12);
+    }
+
+    .report-pin.one { left: 28%; top: 48%; }
+    .report-pin.two { right: 24%; top: 40%; }
+    .report-pin.three { right: 10%; bottom: 14%; }
+    .report-pin.four { left: 13%; bottom: 20%; }
+
+    .report-focus {
+      display: grid;
+      grid-template-columns: 30px minmax(0, 1fr);
+      gap: 10px;
+      align-items: start;
+      margin: 10px 0 0;
+      padding: 10px 12px;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--navy), var(--navy-dark));
       border-left: 4px solid var(--bronze);
-      border-radius: var(--radius);
+      border-radius: 7px;
     }
 
-    .proof-caption b {
-      display: block;
-      font-size: 0.94rem;
+    .report-focus strong {
+      display: grid;
+      place-items: center;
+      width: 26px;
+      height: 26px;
+      color: var(--navy-dark);
+      background: var(--bronze-light);
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 900;
     }
 
-    .proof-caption span {
+    .report-focus b {
       display: block;
-      margin-top: 3px;
-      color: rgba(255, 255, 255, 0.72);
+      color: var(--white);
+      font-size: 0.86rem;
+    }
+
+    .report-focus span {
+      display: block;
+      margin-top: 2px;
+      color: rgba(255, 255, 255, 0.74);
+      font-size: 0.72rem;
+      line-height: 1.35;
+    }
+
+    .report-list {
+      margin: 10px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .report-list li {
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(27, 45, 75, 0.12);
+      cursor: pointer;
+      transition: background 180ms ease, padding-left 180ms ease;
+    }
+
+    .report-list li:hover,
+    .report-list li.is-active {
+      padding-left: 8px;
+      background: rgba(176, 138, 78, 0.11);
+    }
+
+    .report-list li:last-child {
+      border-bottom: 0;
+    }
+
+    .report-list li::before {
+      content: attr(data-step);
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      color: var(--white);
+      background: var(--bronze-light);
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 900;
+    }
+
+    .report-list b {
+      display: block;
+      color: var(--navy);
+      font-size: 0.8rem;
+    }
+
+    .report-list span {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 0.68rem;
+      line-height: 1.28;
+    }
+
+    .report-tag {
+      color: var(--navy);
+      font-size: 0.68rem;
+      font-weight: 900;
+      text-align: right;
+      text-transform: uppercase;
+    }
+
+    .report-hint {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .receive-band {
+      padding: 28px;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--navy-dark), var(--navy));
+      border-radius: 8px;
+      box-shadow: 0 22px 52px rgba(11, 23, 41, 0.14);
+    }
+
+    .receive-title {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 28px;
+      align-items: center;
+      margin-bottom: 26px;
+      color: var(--bronze-light);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .receive-title::before,
+    .receive-title::after {
+      content: "";
+      height: 1px;
+      background: rgba(176, 138, 78, 0.62);
+    }
+
+    .receive-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .receive-item {
+      padding: 0 24px;
+      text-align: center;
+      border-right: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .receive-item:last-child {
+      border-right: 0;
+    }
+
+    .receive-icon {
+      color: var(--bronze-light);
+      font-size: 2.3rem;
+      line-height: 1;
+    }
+
+    .receive-item h3 {
+      margin-top: 14px;
+      color: var(--white);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.2rem;
+      line-height: 1.15;
+    }
+
+    .receive-item h3::after {
+      content: "";
+      display: block;
+      width: 28px;
+      height: 3px;
+      margin: 14px auto 0;
+      background: var(--bronze-light);
+    }
+
+    .receive-item p {
+      margin: 16px auto 0;
+      max-width: 240px;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    .proof-location-note {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 20px;
+      color: var(--navy);
       font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-align: center;
+      text-transform: uppercase;
     }
 
     .shot-note {
@@ -1536,11 +1908,72 @@
       box-shadow: 0 18px 42px rgba(0, 0, 0, 0.16);
     }
 
-    .area-photo img {
+    .area-photo > img {
       width: 100%;
       height: 100%;
       min-height: inherit;
       object-fit: cover;
+    }
+
+    .yard-sign-brand {
+      position: absolute;
+      left: 4%;
+      top: 33%;
+      width: 50%;
+      min-width: 170px;
+      padding: 12px 14px 12px;
+      color: var(--white);
+      text-align: center;
+      transform: perspective(620px) rotateY(-4deg) rotateZ(0.4deg);
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.34);
+    }
+
+    .yard-sign-name {
+      display: block;
+      color: var(--white);
+      font-family: "Bebas Neue", Impact, sans-serif;
+      font-size: 1.72rem;
+      font-weight: 900;
+      line-height: 0.86;
+    }
+
+    .yard-sign-service {
+      display: inline-grid;
+      grid-template-columns: 30px auto 30px;
+      gap: 6px;
+      align-items: center;
+      margin-top: 6px;
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 0.58rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .yard-sign-service::before,
+    .yard-sign-service::after {
+      content: "";
+      height: 5px;
+      background: var(--bronze);
+      transform: skewX(-18deg);
+    }
+
+    .yard-sign-phone {
+      display: block;
+      margin-top: 8px;
+      color: var(--bronze-light);
+      font-size: 1.02rem;
+      font-weight: 900;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .yard-sign-domain {
+      display: block;
+      margin-top: 5px;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 0.55rem;
+      font-weight: 900;
+      text-transform: uppercase;
     }
 
     .area-list {
@@ -1811,7 +2244,7 @@
 
       .hero-inner,
       .guide-shell,
-      .proof-story,
+      .proof-stage,
       .split,
       .area-grid,
       .contact-grid,
@@ -1836,12 +2269,18 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .proof-gallery {
-        grid-template-columns: 1fr;
+      .roof-report-card {
+        left: 8%;
+        right: 6%;
       }
 
-      .proof-tile.large {
-        grid-row: auto;
+      .receive-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 26px 0;
+      }
+
+      .receive-item:nth-child(2) {
+        border-right: 0;
       }
     }
 
@@ -1962,15 +2401,22 @@
       }
 
       .hero-proof {
-        grid-template-columns: 1fr;
         max-width: 320px;
-        gap: 8px;
+        gap: 7px;
         margin-top: 18px;
       }
 
       .hero-proof span {
         min-height: 0;
-        padding: 12px 13px;
+        padding: 0;
+      }
+
+      .hero-proof span + span {
+        padding-left: 0;
+      }
+
+      .hero-proof span + span::before {
+        display: none;
       }
 
       .estimate-card,
@@ -2037,8 +2483,91 @@
         transform: none;
       }
 
-      .proof-copy {
-        padding: 24px;
+      .proof-stage {
+        gap: 28px;
+      }
+
+      .proof-headline {
+        font-size: 3.05rem;
+      }
+
+      .proof-copy-panel .btn {
+        min-width: 0;
+        width: 100%;
+      }
+
+      .report-visual {
+        min-height: 720px;
+      }
+
+      .report-visual > img {
+        min-height: 720px;
+      }
+
+      .roof-report-card {
+        top: 28px;
+        left: 16px;
+        right: 16px;
+        padding: 18px;
+      }
+
+      .report-head {
+        grid-template-columns: 38px minmax(0, 1fr);
+      }
+
+      .report-date {
+        display: none;
+      }
+
+      .report-photo {
+        min-height: 170px;
+      }
+
+      .report-photo img {
+        min-height: 170px;
+      }
+
+      .report-list li {
+        grid-template-columns: 30px minmax(0, 1fr);
+      }
+
+      .report-focus {
+        grid-template-columns: 1fr;
+      }
+
+      .report-tag {
+        display: none;
+      }
+
+      .receive-band {
+        padding: 22px;
+      }
+
+      .receive-title {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .receive-title::before,
+      .receive-title::after {
+        display: none;
+      }
+
+      .receive-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .receive-item,
+      .receive-item:nth-child(2) {
+        padding: 0;
+        border-right: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+        padding-bottom: 22px;
+      }
+
+      .receive-item:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
       }
 
       .service-grid,
@@ -2377,9 +2906,7 @@
             <a class="btn light" href="tel:5042857707">Call for urgent roof issues</a>
           </div>
           <div class="hero-proof" aria-label="Trust Built estimate standards">
-            <span><b>Photo-backed</b>Use roof photos to make the finding easier to understand.</span>
-            <span><b>Repair or replace</b>Talk through practical options before work is scheduled.</span>
-            <span><b>Local focus</b>Confirm service by address across South Louisiana and Mississippi.</span>
+            <span><b>Photo-backed</b>Repair-first guidance for South Louisiana and Mississippi roofs.</span>
           </div>
         </div>
 
@@ -2470,81 +2997,102 @@
       </div>
     </section>
 
-    <section class="proof-strip container" data-section="conversion-proof-strip">
-      <div class="proof-grid" aria-label="Trust Built Roofing estimate advantages">
-        <div class="proof-item">
-          <b>Clear estimate request</b>
-          <span>Start with the roof issue, location, urgency, and photos if available.</span>
-        </div>
-        <div class="proof-item">
-          <b>Photo-documented findings</b>
-          <span>Use visible roof conditions to understand the next step.</span>
-        </div>
-        <div class="proof-item">
-          <b>Repair or replacement</b>
-          <span>Compare practical options based on roof age, condition, and urgency.</span>
-        </div>
-        <div class="proof-item">
-          <b>Service by address</b>
-          <span>Serving homeowners across South Louisiana and Mississippi.</span>
-        </div>
-      </div>
-    </section>
-
     <section class="section local-proof" data-section="local-proof" data-section-purpose="Trust proof using jobsite-style visual evidence">
-      <div class="container proof-story">
-        <div class="proof-copy">
-          <p class="kicker">What builds confidence</p>
-          <h2>Use the estimate to document the roof, explain the risk, and make the next step clear.</h2>
-          <p>
-            A useful roofing appointment should leave a homeowner with clear photos, plain-language findings, and a practical repair-or-replacement path before any larger project is discussed.
-          </p>
-          <div class="proof-metrics" aria-label="Trust Built estimate proof points">
-            <div>
-              <b>Photos</b>
-              <span>Show the condition and the roof details that matter.</span>
-            </div>
-            <div>
-              <b>Options</b>
-              <span>Separate urgent repairs from long-term replacement planning.</span>
-            </div>
-            <div>
-              <b>Local</b>
-              <span>Built around South Louisiana and Mississippi roof conditions.</span>
-            </div>
-            <div>
-              <b>Clear</b>
-              <span>Explain what happens next before work is scheduled.</span>
-            </div>
+      <div class="container proof-board">
+        <div class="proof-stage">
+          <div class="proof-copy-panel">
+            <div class="proof-eyebrow"><i>◎</i> Photo-documented roof check</div>
+            <h2 class="proof-headline">Know what your roof needs before anyone talks <span>replacement.</span></h2>
+            <p>
+              A Trust Built roof check gives you clear roof photos, plain-language findings, and a practical repair-or-replacement path based on your actual roof condition.
+            </p>
+            <div class="proof-rule" aria-hidden="true"></div>
+            <ul class="proof-mini-list" aria-label="Trust Built roof check promises">
+              <li>No pressure.</li>
+              <li>No guessing.</li>
+              <li>Just the facts.</li>
+            </ul>
+            <a class="btn" href="#contact" data-guide-link="leak" data-report-cta>Schedule my roof check</a>
+            <p class="proof-cta-note">Includes photo documentation, issue notes, and next-step options.</p>
+          </div>
+
+          <div class="report-visual" data-shot-brief="Wide local exterior roof photo with home context, clean daylight, roof and access visible.">
+            <img src="assets/trust-built-roof-jobsite.webp" alt="Residential roof jobsite used for a photo-documented roof check" loading="lazy" />
+            <article class="roof-report-card" aria-label="Roof check report preview">
+              <div class="report-head">
+                <div class="report-icon">▣</div>
+                <div>
+                  <h3>Roof Check Report</h3>
+                  <p>123 Oak Ridge Drive</p>
+                </div>
+                <div class="report-date">May 15, 2026</div>
+              </div>
+
+              <div class="report-photo" data-report-photo data-shot-brief="Roof condition photo with numbered annotations for pipe boots, flashing, ridge caps, valleys, or leak source.">
+                <img src="assets/trust-built-completed-roof.webp" alt="Roof condition photo with annotated inspection points" loading="lazy" data-report-image />
+                <button class="report-pin one is-active" type="button" data-report-choice="photos" aria-label="Show documented roof details"><span>1</span></button>
+                <button class="report-pin two" type="button" data-report-choice="repair" aria-label="Show repair versus replacement guidance"><span>2</span></button>
+                <button class="report-pin three" type="button" data-report-choice="local" aria-label="Show local roof wear"><span>3</span></button>
+                <button class="report-pin four" type="button" data-report-choice="next" aria-label="Show next step"><span>4</span></button>
+              </div>
+
+              <div class="report-focus" aria-live="polite">
+                <strong data-report-focus-number>1</strong>
+                <div>
+                  <b data-report-focus-title>Roof details documented</b>
+                  <span data-report-focus-body>Penetrations, flashing, valleys, ridge caps, and vulnerable areas are photographed so the recommendation is visible.</span>
+                </div>
+              </div>
+
+              <ul class="report-list">
+                <li data-step="1" data-report-choice="photos" class="is-active" tabindex="0" role="button" aria-pressed="true">
+                  <div><b>Roof details documented</b><span>Penetrations, flashing, valleys, ridge caps, and vulnerable areas photographed.</span></div>
+                  <strong class="report-tag">30+ photos</strong>
+                </li>
+                <li data-step="2" data-report-choice="repair" tabindex="0" role="button" aria-pressed="false">
+                  <div><b>Repair vs. replacement separated</b><span>Urgent repairs are separated from long-term planning.</span></div>
+                  <strong class="report-tag">Repair first</strong>
+                </li>
+                <li data-step="3" data-report-choice="local" tabindex="0" role="button" aria-pressed="false">
+                  <div><b>Local roof wear considered</b><span>Gulf South heat, wind, rain, algae, and storm exposure evaluated.</span></div>
+                  <strong class="report-tag">Local focus</strong>
+                </li>
+                <li data-step="4" data-report-choice="next" tabindex="0" role="button" aria-pressed="false">
+                  <div><b>Clear next step</b><span>You will know whether to repair, monitor, or replace.</span></div>
+                  <strong class="report-tag">Next steps</strong>
+                </li>
+              </ul>
+              <p class="report-hint">Tap a marker or row to preview the roof check.</p>
+            </article>
           </div>
         </div>
 
-        <div class="proof-gallery" aria-label="Roofing documentation examples">
-          <figure class="proof-tile large">
-            <img src="assets/trust-built-roof-jobsite.webp" alt="Organized residential roof replacement jobsite with materials staged near the home" loading="lazy" />
-            <figcaption class="proof-caption">
-              <b>Jobsite context</b>
-              <span>Show the home, access, materials, and work area before the appointment turns into a project.</span>
-              <span class="shot-note">Replace with: wide local jobsite photo, home visible, materials staged neatly, crew or vehicle only if authentic.</span>
-            </figcaption>
-          </figure>
-          <figure class="proof-tile">
-            <img src="assets/trust-built-pipe-boot-detail.webp" alt="Close roof repair detail showing pipe boot and surrounding shingles" loading="lazy" />
-            <figcaption class="proof-caption">
-              <b>Finding photos</b>
-              <span>Document vulnerable roof details before recommending work.</span>
-              <span class="shot-note">Replace with: sharp close-up of a real leak source, flashing issue, nail pop, or pipe boot failure.</span>
-            </figcaption>
-          </figure>
-          <figure class="proof-tile">
-            <img src="assets/trust-built-completed-roof.webp" alt="Completed residential asphalt shingle roof on a local home" loading="lazy" />
-            <figcaption class="proof-caption">
-              <b>Finished result</b>
-              <span>Use real completed roofs to show workmanship and cleanup.</span>
-              <span class="shot-note">Replace with: daylight finished-roof photo from a Trust Built job, roof dominant, home context included.</span>
-            </figcaption>
-          </figure>
+        <div class="receive-band">
+          <div class="receive-title">What you receive</div>
+          <div class="receive-grid">
+            <div class="receive-item">
+              <div class="receive-icon">▣</div>
+              <h3>Proof, not guesswork</h3>
+              <p>Roof photos tied to the actual issue, so you can see what we see.</p>
+            </div>
+            <div class="receive-item">
+              <div class="receive-icon">☑</div>
+              <h3>Repair-first clarity</h3>
+              <p>Urgent fixes are separated from full replacement recommendations.</p>
+            </div>
+            <div class="receive-item">
+              <div class="receive-icon">☂</div>
+              <h3>Built for Gulf South roofs</h3>
+              <p>Findings based on Louisiana heat, wind, rain, and storm wear.</p>
+            </div>
+            <div class="receive-item">
+              <div class="receive-icon">⌖</div>
+              <h3>A clear path forward</h3>
+              <p>Know what needs attention now, what can wait, and what the next move costs.</p>
+            </div>
+          </div>
         </div>
+        <div class="proof-location-note">Designed for South Louisiana homeowners. Local knowledge. Honest answers. No pressure.</div>
       </div>
     </section>
 
@@ -2809,6 +3357,12 @@
 
         <figure class="area-photo">
           <img src="assets/trust-built-yard-sign.webp" alt="Trust Built Roofing local yard sign at a residential jobsite" loading="lazy" />
+          <div class="yard-sign-brand" aria-hidden="true">
+            <span class="yard-sign-name">Trust Built</span>
+            <span class="yard-sign-service">Roofing Co.</span>
+            <span class="yard-sign-phone">(504) 285-7707</span>
+            <span class="yard-sign-domain">trustbuiltroofing.com</span>
+          </div>
           <figcaption class="proof-caption">
             <b>Local proof photo</b>
             <span>Replace with: real Trust Built yard sign in front of a local job, roof or home visible, phone/logo readable if possible.</span>
@@ -3308,6 +3862,116 @@
       }
 
       setGuide(activeGuideKey);
+
+      var reportData = {
+        photos: {
+          number: "1",
+          title: "Roof details documented",
+          body: "Penetrations, flashing, valleys, ridge caps, and vulnerable areas are photographed so the recommendation is visible.",
+          image: "assets/trust-built-completed-roof.webp",
+          alt: "Completed roof condition photo with annotated roof details",
+          guide: "leak"
+        },
+        repair: {
+          number: "2",
+          title: "Repair-first clarity",
+          body: "Urgent fixes are separated from replacement planning so the appointment does not turn into a forced replacement pitch.",
+          image: "assets/trust-built-pipe-boot-detail.webp",
+          alt: "Close roof repair detail used to explain a repair-first recommendation",
+          guide: "leak"
+        },
+        local: {
+          number: "3",
+          title: "Local roof wear considered",
+          body: "The report calls out heat, wind, rain, algae, and storm exposure that affect roofs across South Louisiana and Mississippi.",
+          image: "assets/trust-built-storm-damage-detail.webp",
+          alt: "Storm related roof wear detail used in a roof check report",
+          guide: "storm"
+        },
+        next: {
+          number: "4",
+          title: "Clear next step",
+          body: "The homeowner leaves knowing whether to repair, monitor, or plan replacement before any work is scheduled.",
+          image: "assets/trust-built-roof-jobsite.webp",
+          alt: "Roof jobsite photo used to explain next steps before work is scheduled",
+          guide: "replace"
+        }
+      };
+
+      var reportVisual = document.querySelector(".report-visual");
+      var reportPhoto = document.querySelector("[data-report-photo]");
+      var reportImage = document.querySelector("[data-report-image]");
+      var reportPins = Array.prototype.slice.call(document.querySelectorAll("[data-report-choice].report-pin"));
+      var reportRows = Array.prototype.slice.call(document.querySelectorAll(".report-list [data-report-choice]"));
+      var reportFocusNumber = document.querySelector("[data-report-focus-number]");
+      var reportFocusTitle = document.querySelector("[data-report-focus-title]");
+      var reportFocusBody = document.querySelector("[data-report-focus-body]");
+      var reportCta = document.querySelector("[data-report-cta]");
+
+      function setReport(choice) {
+        var item = reportData[choice];
+        if (!item) return;
+
+        reportPins.forEach(function (pin) {
+          pin.classList.toggle("is-active", pin.getAttribute("data-report-choice") === choice);
+        });
+        reportRows.forEach(function (row) {
+          var active = row.getAttribute("data-report-choice") === choice;
+          row.classList.toggle("is-active", active);
+          row.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+
+        if (reportFocusNumber) reportFocusNumber.textContent = item.number;
+        if (reportFocusTitle) reportFocusTitle.textContent = item.title;
+        if (reportFocusBody) reportFocusBody.textContent = item.body;
+        if (reportCta) reportCta.setAttribute("data-guide-link", item.guide);
+        setGuide(item.guide);
+
+        if (!reportImage) return;
+        if (!reduceMotion && reportPhoto) reportPhoto.classList.add("is-changing");
+        window.setTimeout(function () {
+          reportImage.src = item.image;
+          reportImage.alt = item.alt;
+          if (reportPhoto) {
+            window.setTimeout(function () {
+              reportPhoto.classList.remove("is-changing");
+            }, 90);
+          }
+        }, reduceMotion ? 0 : 120);
+      }
+
+      reportPins.forEach(function (pin) {
+        pin.addEventListener("click", function () {
+          setReport(pin.getAttribute("data-report-choice"));
+        });
+      });
+
+      reportRows.forEach(function (row) {
+        function activateRow() {
+          setReport(row.getAttribute("data-report-choice"));
+        }
+        row.addEventListener("click", activateRow);
+        row.addEventListener("keydown", function (event) {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            activateRow();
+          }
+        });
+      });
+
+      if (reportVisual && !reduceMotion) {
+        reportVisual.addEventListener("pointermove", function (event) {
+          var rect = reportVisual.getBoundingClientRect();
+          var x = ((event.clientX - rect.left) / rect.width - 0.5) * 4;
+          var y = ((event.clientY - rect.top) / rect.height - 0.5) * -4;
+          reportVisual.style.setProperty("--tilt-x", x.toFixed(2) + "deg");
+          reportVisual.style.setProperty("--tilt-y", y.toFixed(2) + "deg");
+        });
+        reportVisual.addEventListener("pointerleave", function () {
+          reportVisual.style.setProperty("--tilt-x", "0deg");
+          reportVisual.style.setProperty("--tilt-y", "0deg");
+        });
+      }
 
       var systemData = {
         leak: {
