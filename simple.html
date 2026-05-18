@@ -145,6 +145,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 26px;
+      transition: min-height 180ms ease;
     }
 
     .brand {
@@ -152,6 +153,7 @@
       align-items: center;
       gap: 13px;
       min-width: 245px;
+      transition: gap 180ms ease, min-width 180ms ease;
     }
 
     .brand-mark {
@@ -161,6 +163,7 @@
       grid-template-columns: 1fr 1fr;
       gap: 6px;
       transform: skewX(-16deg);
+      transition: width 180ms ease, height 180ms ease, gap 180ms ease;
     }
 
     .brand-mark span:first-child {
@@ -183,6 +186,7 @@
       font-weight: 400;
       letter-spacing: 0;
       text-transform: uppercase;
+      transition: font-size 180ms ease;
     }
 
     .brand-text small {
@@ -191,6 +195,31 @@
       font-weight: 900;
       letter-spacing: 0.42em;
       text-transform: uppercase;
+      transition: font-size 180ms ease, letter-spacing 180ms ease;
+    }
+
+    .header.is-scrolled .nav {
+      min-height: 58px;
+    }
+
+    .header.is-scrolled .brand {
+      gap: 10px;
+      min-width: 214px;
+    }
+
+    .header.is-scrolled .brand-mark {
+      width: 38px;
+      height: 27px;
+      gap: 5px;
+    }
+
+    .header.is-scrolled .brand-text strong {
+      font-size: 1.6rem;
+    }
+
+    .header.is-scrolled .brand-text small {
+      font-size: 0.62rem;
+      letter-spacing: 0.34em;
     }
 
     .nav-links {
@@ -595,6 +624,38 @@
       line-height: 1.45;
     }
 
+    .issue-preview {
+      display: grid;
+      grid-template-columns: 82px minmax(0, 1fr);
+      gap: 12px;
+      align-items: center;
+      padding: 12px;
+      background: #eef2f7;
+      border: 1px solid rgba(27, 45, 75, 0.12);
+      border-radius: var(--radius);
+    }
+
+    .issue-preview img {
+      width: 82px;
+      height: 72px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .issue-preview b {
+      display: block;
+      color: var(--navy);
+      font-size: 0.94rem;
+    }
+
+    .issue-preview span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+
     .step-actions {
       display: flex;
       flex-wrap: wrap;
@@ -747,6 +808,34 @@
       max-width: 550px;
       margin: 16px 0 0;
       color: rgba(255, 255, 255, 0.74);
+    }
+
+    .guide-preview {
+      margin-top: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 20px 46px rgba(0, 0, 0, 0.2);
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .guide-preview.is-changing {
+      opacity: 0.56;
+      transform: translateY(4px);
+    }
+
+    .guide-preview img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+    }
+
+    .guide-preview figcaption {
+      padding: 14px 16px;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.9rem;
+      font-weight: 800;
     }
 
     .guide-tool {
@@ -2841,21 +2930,28 @@
             <div class="form-step" data-form-step="issue">
               <div class="issue-picker" aria-label="Choose the roofing issue">
                 <button class="issue-choice is-active" type="button" data-hero-choice="Roof repair or leak concern" data-guide-key="leak" aria-pressed="true">
-                  <b>Active leak</b>
-                  <span>Water is getting in or stains are spreading.</span>
+                  <b>Water Is Getting In</b>
+                  <span>Leak, ceiling stain, or mystery water source.</span>
                 </button>
                 <button class="issue-choice" type="button" data-hero-choice="Storm damage" data-guide-key="storm" aria-pressed="false">
-                  <b>Storm damage</b>
-                  <span>Wind, hail, debris, or missing shingles.</span>
+                  <b>Storm Hit The Roof</b>
+                  <span>Wind, hail, debris, or lifted shingles.</span>
                 </button>
                 <button class="issue-choice" type="button" data-hero-choice="Full roof replacement estimate" data-guide-key="replace" aria-pressed="false">
-                  <b>Replacement</b>
-                  <span>The roof is old or repairs keep coming back.</span>
+                  <b>Plan Replacement</b>
+                  <span>Old roof, recurring repairs, long-term plan.</span>
                 </button>
                 <button class="issue-choice" type="button" data-hero-choice="Not sure yet" data-guide-key="unsure" aria-pressed="false">
-                  <b>Not sure yet</b>
-                  <span>You need a professional roof opinion.</span>
+                  <b>Need An Opinion</b>
+                  <span>Not sure whether repair or replacement fits.</span>
                 </button>
+              </div>
+              <div class="issue-preview" aria-live="polite">
+                <img src="assets/trust-built-pipe-boot-detail.webp" alt="Roof leak detail preview" loading="lazy" data-issue-preview-image />
+                <div>
+                  <b data-issue-preview-title>Leak-Focused Roof Check</b>
+                  <span data-issue-preview-body>We start with source tracing, vulnerable details, and practical repair options.</span>
+                </div>
               </div>
               <button class="btn" type="button" data-next-step>Next: contact details</button>
             </div>
@@ -2941,33 +3037,33 @@
                 <img src="assets/trust-built-completed-roof.webp" alt="Roof condition photo with annotated inspection points" loading="lazy" data-report-image />
                 <button class="report-pin one is-active" type="button" data-report-choice="photos" aria-label="Show documented roof details"><span>1</span></button>
                 <button class="report-pin two" type="button" data-report-choice="repair" aria-label="Show repair versus replacement guidance"><span>2</span></button>
-                <button class="report-pin three" type="button" data-report-choice="local" aria-label="Show local roof wear"><span>3</span></button>
+                <button class="report-pin three" type="button" data-report-choice="tailored" aria-label="Show tailored roof system plan"><span>3</span></button>
                 <button class="report-pin four" type="button" data-report-choice="next" aria-label="Show next step"><span>4</span></button>
               </div>
 
               <div class="report-focus" aria-live="polite">
                 <strong data-report-focus-number>1</strong>
                 <div>
-                  <b data-report-focus-title>Roof details documented</b>
+                  <b data-report-focus-title>Roof Details Documented</b>
                   <span data-report-focus-body>Penetrations, flashing, valleys, ridge caps, and vulnerable areas are photographed so the recommendation is visible.</span>
                 </div>
               </div>
 
               <ul class="report-list">
                 <li data-step="1" data-report-choice="photos" class="is-active" tabindex="0" role="button" aria-pressed="true">
-                  <div><b>Roof details documented</b><span>Penetrations, flashing, valleys, ridge caps, and vulnerable areas photographed.</span></div>
+                  <div><b>Roof Details Documented</b><span>Penetrations, flashing, valleys, ridge caps, and vulnerable areas photographed.</span></div>
                   <strong class="report-tag">30+ photos</strong>
                 </li>
                 <li data-step="2" data-report-choice="repair" tabindex="0" role="button" aria-pressed="false">
-                  <div><b>Repair vs. replacement separated</b><span>Urgent repairs are separated from long-term planning.</span></div>
+                  <div><b>Repair vs. Replacement</b><span>Urgent repairs are separated from long-term planning.</span></div>
                   <strong class="report-tag">Repair first</strong>
                 </li>
-                <li data-step="3" data-report-choice="local" tabindex="0" role="button" aria-pressed="false">
-                  <div><b>Local roof wear considered</b><span>Gulf South heat, wind, rain, algae, and storm exposure evaluated.</span></div>
-                  <strong class="report-tag">Local focus</strong>
+                <li data-step="3" data-report-choice="tailored" tabindex="0" role="button" aria-pressed="false">
+                  <div><b>Plan Of Action Tailored To Client Needs</b><span>Material, ventilation, repair scope, and budget priorities are matched to the home.</span></div>
+                  <strong class="report-tag">Tailored plan</strong>
                 </li>
                 <li data-step="4" data-report-choice="next" tabindex="0" role="button" aria-pressed="false">
-                  <div><b>Clear next step</b><span>You will know whether to repair, monitor, or replace.</span></div>
+                  <div><b>Clear Next Steps</b><span>You will know whether to repair, monitor, or replace.</span></div>
                   <strong class="report-tag">Next steps</strong>
                 </li>
               </ul>
@@ -2981,22 +3077,22 @@
           <div class="receive-grid">
             <div class="receive-item">
               <div class="receive-icon">▣</div>
-              <h3>Proof, not guesswork</h3>
+              <h3>Roof Details Documented</h3>
               <p>Roof photos tied to the actual issue, so you can see what we see.</p>
             </div>
             <div class="receive-item">
               <div class="receive-icon">☑</div>
-              <h3>Repair-first clarity</h3>
+              <h3>Repair vs. Replacement</h3>
               <p>Urgent fixes are separated from full replacement recommendations.</p>
             </div>
             <div class="receive-item">
               <div class="receive-icon">☂</div>
-              <h3>Built for Gulf South roofs</h3>
-              <p>Findings based on Louisiana heat, wind, rain, and storm wear.</p>
+              <h3>Plan Of Action Tailored To Client Needs</h3>
+              <p>Materials, scope, timing, and priorities are matched to the home.</p>
             </div>
             <div class="receive-item">
               <div class="receive-icon">⌖</div>
-              <h3>A clear path forward</h3>
+              <h3>Clear Next Steps</h3>
               <p>Know what needs attention now, what can wait, and what the next move costs.</p>
             </div>
           </div>
@@ -3061,24 +3157,28 @@
           <p>
             A leak, storm hit, old roof, and general concern should not start with the same sales pitch. Pick what fits and the form will carry that context into the estimate request.
           </p>
+          <figure class="guide-preview" data-guide-preview>
+            <img src="assets/trust-built-pipe-boot-detail.webp" alt="Roof leak repair detail" loading="lazy" data-guide-image />
+            <figcaption data-guide-caption>Leak checks focus on the roof details most likely to let water in.</figcaption>
+          </figure>
         </div>
 
         <div class="guide-tool">
           <div class="choice-grid" aria-label="Roof concern guide choices">
             <button class="choice-button is-active" type="button" data-guide-choice="leak" aria-pressed="true">
-              <b>Active leak</b>
+              <b>Active Leak</b>
               <span>Water is entering the home, stains are growing, or the leak source is unclear.</span>
             </button>
             <button class="choice-button" type="button" data-guide-choice="storm" aria-pressed="false">
-              <b>Storm damage</b>
+              <b>Storm Damage</b>
               <span>Wind, hail, debris, or heavy rain may have damaged shingles or flashing.</span>
             </button>
             <button class="choice-button" type="button" data-guide-choice="replace" aria-pressed="false">
-              <b>Replacement planning</b>
+              <b>Replacement Planning</b>
               <span>The roof is aging, repairs keep returning, or you want a long-term plan.</span>
             </button>
             <button class="choice-button" type="button" data-guide-choice="unsure" aria-pressed="false">
-              <b>Not sure yet</b>
+              <b>Not Sure Yet</b>
               <span>You need a roof opinion before deciding whether repair or replacement fits.</span>
             </button>
           </div>
@@ -3199,8 +3299,8 @@
             <p>Use photos and clear notes to understand the condition before you make a roofing decision.</p>
           </article>
           <article class="card">
-            <h3>Local roof knowledge</h3>
-            <p>South Louisiana and Mississippi roofs deal with heavy rain, wind, humidity, and storm exposure.</p>
+            <h3>Roofing Systems Tailored To Client Needs</h3>
+            <p>Materials, ventilation, repair scope, and replacement timing should fit the home, not a generic package.</p>
           </article>
         </div>
       </div>
@@ -3623,7 +3723,12 @@
           urgency: "Active leak now",
           title: "Request a leak-focused roof check.",
           body: "Send the location of the leak, when it happens, and any interior photos. The appointment should focus on source tracing, vulnerable roof details, and practical repair options.",
-          prep: "Bring photos of the ceiling stain and roof area."
+          prep: "Bring photos of the ceiling stain and roof area.",
+          image: "assets/trust-built-pipe-boot-detail.webp",
+          alt: "Roof leak detail around a pipe boot",
+          caption: "Leak checks focus on the roof details most likely to let water in.",
+          previewTitle: "Leak-Focused Roof Check",
+          previewBody: "We start with source tracing, vulnerable details, and practical repair options."
         },
         storm: {
           hidden: "storm damage",
@@ -3632,7 +3737,12 @@
           urgency: "Storm happened recently",
           title: "Schedule a storm damage roof check.",
           body: "Start with visible damage, recent weather timing, and photo documentation. The goal is to separate urgent repair needs from broader roof-system concerns.",
-          prep: "Note the storm date and visible damage."
+          prep: "Note the storm date and visible damage.",
+          image: "assets/trust-built-storm-damage-detail.webp",
+          alt: "Storm damaged shingles on a roof",
+          caption: "Storm checks document visible roof damage and the urgency of the next step.",
+          previewTitle: "Storm Damage Review",
+          previewBody: "We document visible damage, recent weather timing, and urgent repair risk."
         },
         replace: {
           hidden: "roof replacement planning",
@@ -3641,7 +3751,12 @@
           urgency: "Planning ahead",
           title: "Plan a full roof replacement estimate.",
           body: "Review age, recurring repairs, material options, ventilation, and the full scope needed to protect the home long term.",
-          prep: "Know roof age, repair history, and goals."
+          prep: "Know roof age, repair history, and goals.",
+          image: "assets/trust-built-completed-roof.webp",
+          alt: "Completed residential asphalt shingle roof",
+          caption: "Replacement planning should show the finished roof direction and system details.",
+          previewTitle: "Replacement Planning",
+          previewBody: "We review roof age, repair history, materials, ventilation, and project scope."
         },
         unsure: {
           hidden: "not sure yet",
@@ -3650,7 +3765,12 @@
           urgency: "Visible damage, but no leak",
           title: "Start with a general roof condition review.",
           body: "Use the appointment to understand what is normal wear, what needs attention now, and what can be planned later.",
-          prep: "Send any photos of the roof concern."
+          prep: "Send any photos of the roof concern.",
+          image: "assets/trust-built-yard-sign-real.png",
+          alt: "Trust Built Roofing yard sign at a residential job",
+          caption: "A general review helps confirm what kind of appointment actually fits.",
+          previewTitle: "Professional Roof Opinion",
+          previewBody: "We help you understand whether repair, replacement, or monitoring makes sense."
         }
       };
 
@@ -3660,6 +3780,12 @@
       var guideBody = document.querySelector("[data-guide-body]");
       var guidePrep = document.querySelector("[data-guide-prep]");
       var guideCta = document.querySelector("[data-guide-cta]");
+      var guidePreview = document.querySelector("[data-guide-preview]");
+      var guideImage = document.querySelector("[data-guide-image]");
+      var guideCaption = document.querySelector("[data-guide-caption]");
+      var issuePreviewImage = document.querySelector("[data-issue-preview-image]");
+      var issuePreviewTitle = document.querySelector("[data-issue-preview-title]");
+      var issuePreviewBody = document.querySelector("[data-issue-preview-body]");
       var guideFields = Array.prototype.slice.call(document.querySelectorAll("[data-guide-field]"));
       var heroChoices = Array.prototype.slice.call(document.querySelectorAll("[data-hero-choice]"));
       var heroNeedField = document.querySelector("[data-hero-need-field]");
@@ -3701,13 +3827,26 @@
 
         if (!guideResult) return;
         if (!reduceMotion) guideResult.classList.add("is-changing");
+        if (!reduceMotion && guidePreview) guidePreview.classList.add("is-changing");
 
         window.setTimeout(function () {
           if (guideTitle) guideTitle.textContent = next.title;
           if (guideBody) guideBody.textContent = next.body;
           if (guidePrep) guidePrep.textContent = next.prep;
+          if (guideImage) {
+            guideImage.src = next.image;
+            guideImage.alt = next.alt;
+          }
+          if (guideCaption) guideCaption.textContent = next.caption;
+          if (issuePreviewImage) {
+            issuePreviewImage.src = next.image;
+            issuePreviewImage.alt = next.alt;
+          }
+          if (issuePreviewTitle) issuePreviewTitle.textContent = next.previewTitle;
+          if (issuePreviewBody) issuePreviewBody.textContent = next.previewBody;
           window.setTimeout(function () {
             guideResult.classList.remove("is-changing");
+            if (guidePreview) guidePreview.classList.remove("is-changing");
           }, 80);
         }, reduceMotion ? 0 : 120);
       }
@@ -3764,7 +3903,7 @@
       var reportData = {
         photos: {
           number: "1",
-          title: "Roof details documented",
+          title: "Roof Details Documented",
           body: "Penetrations, flashing, valleys, ridge caps, and vulnerable areas are photographed so the recommendation is visible.",
           image: "assets/trust-built-completed-roof.webp",
           alt: "Completed roof condition photo with annotated roof details",
@@ -3772,23 +3911,23 @@
         },
         repair: {
           number: "2",
-          title: "Repair-first clarity",
+          title: "Repair vs. Replacement",
           body: "Urgent fixes are separated from replacement planning so the appointment does not turn into a forced replacement pitch.",
           image: "assets/trust-built-pipe-boot-detail.webp",
           alt: "Close roof repair detail used to explain a repair-first recommendation",
           guide: "leak"
         },
-        local: {
+        tailored: {
           number: "3",
-          title: "Local roof wear considered",
-          body: "The report calls out heat, wind, rain, algae, and storm exposure that affect roofs across South Louisiana and Mississippi.",
-          image: "assets/trust-built-storm-damage-detail.webp",
-          alt: "Storm related roof wear detail used in a roof check report",
-          guide: "storm"
+          title: "Plan Of Action Tailored To Client Needs",
+          body: "The estimate connects materials, ventilation, repair scope, and timing to the homeowner's roof condition, budget, and long-term goals.",
+          image: "assets/trust-built-roof-jobsite.webp",
+          alt: "Roofing jobsite photo used to explain a tailored roof system plan",
+          guide: "replace"
         },
         next: {
           number: "4",
-          title: "Clear next step",
+          title: "Clear Next Steps",
           body: "The homeowner leaves knowing whether to repair, monitor, or plan replacement before any work is scheduled.",
           image: "assets/trust-built-roof-jobsite.webp",
           alt: "Roof jobsite photo used to explain next steps before work is scheduled",
