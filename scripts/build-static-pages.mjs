@@ -202,15 +202,15 @@ function heroImage(page) {
 
 function proofPhotos(prefix) {
   const photos = [
-    ["trust-built-completed-roof.webp", "Completed roof", "A finished roof photo helps homeowners see the type of result a clear estimate is working toward.", "Replace with: daylight finished-roof photo from a Trust Built job, roof dominant, home context included."],
-    ["trust-built-roof-jobsite.webp", "Jobsite organization", "A clean, organized jobsite matters because roofing work affects the whole property while the project is underway.", "Replace with: wide local jobsite photo, home visible, materials staged neatly, crew or vehicle only if authentic."],
-    ["trust-built-pipe-boot-detail.webp", "Repair detail", "Small roof details like pipe boots, flashing, and exposed fasteners can be the source of larger leak problems.", "Replace with: sharp close-up of a real leak source, flashing issue, nail pop, or pipe boot failure."],
-    ["trust-built-storm-damage-detail.webp", "Storm damage detail", "Visible shingle damage, lifted edges, and missing tabs help show why a focused roof check is worth scheduling.", "Replace with: real storm damage detail with enough shingle context to understand the issue."]
+    ["trust-built-completed-roof.webp", "Completed roof", "A finished roof photo helps homeowners see the type of result a clear estimate is working toward."],
+    ["trust-built-roof-jobsite.webp", "Jobsite organization", "A clean, organized jobsite matters because roofing work affects the whole property while the project is underway."],
+    ["trust-built-pipe-boot-detail.webp", "Repair detail", "Small roof details like pipe boots, flashing, and exposed fasteners can be the source of larger leak problems."],
+    ["trust-built-storm-damage-detail.webp", "Storm damage detail", "Visible shingle damage, lifted edges, and missing tabs help show why a focused roof check is worth scheduling."]
   ];
 
-  return photos.map(([src, title, body, shot]) => `<figure class="photo-card">
+  return photos.map(([src, title, body]) => `<figure class="photo-card">
       <img src="${prefix}assets/${src}" alt="${escapeHtml(`${title} roofing documentation photo`)}" loading="lazy" />
-      <figcaption><b>${escapeHtml(title)}</b>${escapeHtml(body)}<span class="shot-note">${escapeHtml(shot)}</span></figcaption>
+      <figcaption><b>${escapeHtml(title)}</b>${escapeHtml(body)}</figcaption>
     </figure>`).join("");
 }
 
@@ -399,7 +399,6 @@ function pageHtml(page) {
     .photo-card img { width:100%; height:100%; min-height:220px; display:block; object-fit:cover; }
     .photo-card figcaption { padding:16px 18px; color:var(--muted); font-size:.9rem; }
     .photo-card b { display:block; margin-bottom:4px; color:var(--navy); font-size:.95rem; }
-    .shot-note { display:block; margin-top:10px; padding-top:10px; border-top:1px solid var(--line); color:var(--navy); font-size:.78rem; font-weight:800; line-height:1.45; }
     .brand-stamp { display:inline-flex; align-items:center; gap:12px; margin-top:22px; padding:12px 16px; background:var(--dark); color:#fff; border-radius:6px; font-weight:900; text-transform:uppercase; letter-spacing:.02em; }
     .brand-stamp small { display:block; color:var(--bronze); font-size:.68rem; letter-spacing:.26em; }
     .mini-mark { width:38px; height:24px; display:grid; grid-template-columns:1fr 1fr; gap:5px; transform:skewX(-16deg); }
