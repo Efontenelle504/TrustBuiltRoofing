@@ -1640,105 +1640,182 @@
       width: max-content;
     }
 
-    .split {
+    .split,
+    .material-layout {
       display: grid;
-      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
-      gap: 50px;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: 48px;
       align-items: center;
     }
 
-    .photo-frame {
+    .material-section {
+      background:
+        radial-gradient(circle at 18% 18%, rgba(176, 138, 78, 0.12), transparent 28%),
+        linear-gradient(180deg, #fbfaf6 0%, var(--paper) 100%);
+    }
+
+    .material-section .container {
+      width: min(1380px, calc(100% - 80px));
+    }
+
+    .photo-frame,
+    .material-visual {
       position: relative;
-      min-height: 410px;
+      min-height: 520px;
       overflow: hidden;
-      border-radius: var(--radius);
-      box-shadow: none;
+      border: 1px solid rgba(27, 45, 75, 0.12);
+      border-radius: 7px;
+      box-shadow: 0 24px 54px rgba(11, 23, 41, 0.12);
       background: var(--navy);
     }
 
-    .photo-frame::before {
+    .photo-frame::before,
+    .material-visual::before {
       content: "";
       position: absolute;
       inset: 0;
       z-index: 1;
-      background: radial-gradient(circle at var(--system-x, 50%) var(--system-y, 50%), rgba(176, 138, 78, 0.26), transparent 28%);
-      opacity: 0;
+      background:
+        linear-gradient(180deg, transparent 46%, rgba(11, 23, 41, 0.7) 100%),
+        radial-gradient(circle at var(--system-x, 50%) var(--system-y, 50%), rgba(176, 138, 78, 0.26), transparent 28%);
+      opacity: 0.84;
       pointer-events: none;
       transition: opacity 180ms ease;
     }
 
-    .photo-frame.is-lit::before {
+    .photo-frame.is-lit::before,
+    .material-visual.is-lit::before {
       opacity: 1;
     }
 
-    .photo-frame img {
+    .photo-frame img,
+    .material-visual img {
       width: 100%;
       height: 100%;
-      min-height: 410px;
+      min-height: 520px;
       object-fit: cover;
       transition: opacity 220ms ease, transform 420ms ease;
     }
 
-    .photo-frame.is-changing img {
-      opacity: 0.35;
-      transform: scale(1.02);
+    .photo-frame.is-changing img,
+    .material-visual.is-changing img {
+      opacity: 0.42;
+      transform: scale(1.025);
     }
 
-    .photo-badge {
+    .material-tabs {
       position: absolute;
       left: 22px;
+      right: 22px;
       bottom: 22px;
       z-index: 2;
-      max-width: 300px;
-      padding: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 7px;
+      background: rgba(11, 23, 41, 0.92);
+      backdrop-filter: blur(10px);
+    }
+
+    .material-tab {
+      min-height: 112px;
+      display: grid;
+      place-items: center;
+      gap: 9px;
+      padding: 16px 10px;
       color: var(--white);
-      background: rgba(11, 23, 41, 0.88);
-      border-left: 5px solid var(--bronze);
-      border-radius: var(--radius);
+      background: transparent;
+      border: 0;
+      border-right: 1px solid rgba(255, 255, 255, 0.18);
+      cursor: pointer;
+      transition: background 180ms ease, color 180ms ease;
     }
 
-    .photo-badge b {
-      display: block;
-      margin-bottom: 4px;
-      font-size: 1.06rem;
+    .material-tab:last-child {
+      border-right: 0;
     }
 
-    .photo-badge span {
-      color: rgba(255, 255, 255, 0.76);
-      font-size: 0.9rem;
+    .material-tab.is-active {
+      color: var(--navy-dark);
+      background: linear-gradient(135deg, var(--bronze-light), var(--bronze));
     }
 
-    .check-list {
+    .material-tab b {
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      line-height: 1.16;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .roof-line-icon {
+      width: 54px;
+      height: 36px;
+      color: currentColor;
+    }
+
+    .material-copy h2 {
+      max-width: 760px;
+    }
+
+    .material-copy,
+    .material-card > div {
+      min-width: 0;
+    }
+
+    .material-copy > p {
+      max-width: 690px;
+    }
+
+    .check-list,
+    .material-list {
       display: grid;
       gap: 14px;
       margin-top: 24px;
     }
 
-    .check {
+    .check,
+    .material-card {
       display: grid;
-      grid-template-columns: 42px 1fr;
-      gap: 14px;
-      align-items: start;
+      grid-template-columns: 48px 1fr 82px;
+      gap: 18px;
+      align-items: center;
       width: 100%;
-      padding: 16px;
-      background: #f8fafc;
-      border: 1px solid var(--line);
-      border-radius: 5px;
+      min-height: 104px;
+      padding: 18px 20px;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid rgba(27, 45, 75, 0.14);
+      border-radius: 7px;
       color: inherit;
       text-align: left;
       cursor: pointer;
-      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+      box-shadow: 0 10px 28px rgba(11, 23, 41, 0.05);
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease, color 180ms ease;
     }
 
     .check:hover,
-    .check.is-active {
+    .check.is-active,
+    .material-card:hover,
+    .material-card.is-active {
       transform: translateX(4px);
-      border-color: rgba(176, 138, 78, 0.58);
+      border-color: rgba(176, 138, 78, 0.86);
       background: var(--white);
-      box-shadow: 0 14px 34px rgba(11, 23, 41, 0.08);
+      box-shadow: 0 18px 42px rgba(11, 23, 41, 0.12);
     }
 
-    .check span:first-child {
+    .check.is-active,
+    .material-card.is-active {
+      color: var(--white);
+      background:
+        radial-gradient(circle at 92% 26%, rgba(176, 138, 78, 0.18), transparent 25%),
+        linear-gradient(135deg, var(--navy), var(--navy-dark));
+      box-shadow: 0 20px 48px rgba(11, 23, 41, 0.18);
+    }
+
+    .check span:first-child,
+    .material-number {
       width: 42px;
       height: 42px;
       display: grid;
@@ -1746,35 +1823,65 @@
       color: var(--white);
       background: var(--navy);
       border-radius: 50%;
-      font-weight: 800;
+      font-weight: 900;
       transition: background 180ms ease, color 180ms ease;
     }
 
-    .check.is-active span:first-child {
+    .check.is-active span:first-child,
+    .material-card.is-active .material-number {
       color: var(--navy-dark);
       background: var(--bronze);
     }
 
-    .check b {
+    .check b,
+    .material-card b {
       display: block;
       color: var(--navy);
+      font-size: 1.05rem;
+      font-weight: 900;
     }
 
-    .check p {
+    .check.is-active b,
+    .check.is-active p,
+    .material-card.is-active b,
+    .material-card.is-active p {
+      color: var(--white);
+    }
+
+    .check p,
+    .material-card p {
       margin: 3px 0 0;
       color: var(--muted);
       font-size: 0.94rem;
+      line-height: 1.5;
+      overflow-wrap: break-word;
     }
 
-    .system-note {
+    .material-card .roof-line-icon {
+      justify-self: end;
+      width: 68px;
+      height: 46px;
+      color: var(--navy);
+      opacity: 0.9;
+    }
+
+    .material-card.is-active .roof-line-icon {
+      color: var(--bronze-light);
+      opacity: 1;
+    }
+
+    .system-note,
+    .material-summary {
+      width: 100%;
       margin-top: 18px;
-      padding: 20px;
+      padding: 22px;
       color: var(--white);
       background:
-        linear-gradient(135deg, rgba(27, 45, 75, 0.96), rgba(11, 23, 41, 0.98));
-      border-left: 5px solid var(--bronze);
-      border-radius: var(--radius);
-      box-shadow: 0 18px 42px rgba(11, 23, 41, 0.14);
+        radial-gradient(circle at 9% 16%, rgba(176, 138, 78, 0.18), transparent 28%),
+        linear-gradient(135deg, rgba(27, 45, 75, 0.98), rgba(11, 23, 41, 0.99));
+      border: 1px solid rgba(176, 138, 78, 0.42);
+      border-radius: 7px;
+      box-shadow: 0 22px 52px rgba(11, 23, 41, 0.18);
       transition: opacity 180ms ease, transform 180ms ease;
     }
 
@@ -1783,9 +1890,28 @@
       transform: translateY(4px);
     }
 
-    .system-note b {
+    .summary-main {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .summary-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      color: var(--bronze-light);
+      border: 1px solid rgba(215, 181, 108, 0.45);
+      border-radius: 50%;
+    }
+
+    .system-note b,
+    .material-summary b {
       display: block;
-      margin-bottom: 6px;
+      margin-bottom: 2px;
       color: var(--bronze-light);
       font-size: 0.76rem;
       font-weight: 900;
@@ -1793,10 +1919,80 @@
       text-transform: uppercase;
     }
 
-    .system-note p {
+    .material-summary h3 {
       margin: 0;
-      color: rgba(255, 255, 255, 0.78);
+      color: var(--white);
+      font-family: var(--display);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 400;
+      line-height: 0.98;
+    }
+
+    .system-note p,
+    .material-summary p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.82);
       font-size: 0.94rem;
+    }
+
+    .summary-meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .summary-meta span {
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .material-cta {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 60px minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: center;
+      margin-top: 30px;
+      padding: 26px 32px;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(27, 45, 75, 0.12);
+      border-radius: 7px;
+      box-shadow: 0 18px 44px rgba(11, 23, 41, 0.08);
+    }
+
+    .material-cta-icon {
+      width: 60px;
+      height: 60px;
+      display: grid;
+      place-items: center;
+      color: var(--navy);
+      background: rgba(176, 138, 78, 0.14);
+      border-radius: 50%;
+    }
+
+    .material-cta h3 {
+      margin: 0;
+      color: var(--navy);
+      font-family: var(--display);
+      font-size: 2rem;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .material-cta p {
+      margin: 6px 0 0;
+      color: var(--muted);
+    }
+
+    .material-cta .btn {
+      min-width: 260px;
+      gap: 10px;
     }
 
     .card-grid {
@@ -2234,6 +2430,7 @@
       .guide-shell,
       .proof-stage,
       .split,
+      .material-layout,
       .area-grid,
       .contact-grid,
       .answer-band,
@@ -2269,6 +2466,15 @@
 
       .receive-item:nth-child(2) {
         border-right: 0;
+      }
+
+      .material-cta {
+        grid-template-columns: 60px 1fr;
+      }
+
+      .material-cta .btn {
+        grid-column: 1 / -1;
+        width: 100%;
       }
     }
 
@@ -2582,6 +2788,61 @@
       .check:hover,
       .check.is-active {
         transform: none;
+      }
+
+      .material-layout {
+        gap: 30px;
+      }
+
+      .photo-frame,
+      .material-visual,
+      .photo-frame img,
+      .material-visual img {
+        min-height: 430px;
+      }
+
+      .material-tabs {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+      }
+
+      .material-tab {
+        min-height: 88px;
+        padding: 12px 6px;
+      }
+
+      .material-tab b {
+        font-size: 0.68rem;
+      }
+
+      .roof-line-icon {
+        width: 42px;
+        height: 30px;
+      }
+
+      .material-card {
+        grid-template-columns: 42px 1fr;
+        gap: 12px;
+        min-height: 0;
+        padding: 16px;
+      }
+
+      .material-card .roof-line-icon {
+        display: none;
+      }
+
+      .summary-meta {
+        grid-template-columns: 1fr;
+      }
+
+      .material-cta {
+        grid-template-columns: 1fr;
+        padding: 22px;
+      }
+
+      .material-cta .btn {
+        min-width: 0;
       }
 
       .system-note {
@@ -3188,51 +3449,112 @@
       </div>
     </section>
 
-    <section id="systems" class="section" data-section="roof-systems" data-section-purpose="Roof system education and product confidence">
-      <div class="container split">
-        <div class="photo-frame" data-system-frame>
-          <img data-system-image src="assets/trust-built-roof-jobsite.webp" alt="Metal roofing material and roof system planning reference" loading="lazy" />
-          <div class="photo-badge">
-            <b data-system-badge-title>Metal roofing.</b>
-            <span data-system-badge-body>Built for long-term durability, clean profiles, and strong weather performance.</span>
+    <section id="systems" class="section material-section" data-section="roof-systems" data-section-purpose="Roof material comparison and product confidence">
+      <div class="container material-layout">
+        <div class="photo-frame material-visual" data-system-frame>
+          <img data-system-image src="assets/trust-built-completed-roof.webp" alt="Finished residential roof used to compare metal, asphalt, and stone coated steel options" loading="lazy" />
+          <div class="material-tabs" aria-label="Roof material image selector">
+            <button class="material-tab system-tab is-active" type="button" data-system-tab="metal" aria-pressed="true">
+              <svg class="roof-line-icon" viewBox="0 0 72 48" aria-hidden="true">
+                <path d="M12 42 24 10h24l12 32" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
+                <path d="M24 10v32M36 10v32M48 10v32" fill="none" stroke="currentColor" stroke-width="2" />
+              </svg>
+              <b>Metal</b>
+            </button>
+            <button class="material-tab system-tab" type="button" data-system-tab="asphalt" aria-pressed="false">
+              <svg class="roof-line-icon" viewBox="0 0 72 48" aria-hidden="true">
+                <path d="M10 40h52L54 12H18Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
+                <path d="M16 26h40M22 12v28M36 12v28M50 12v28" fill="none" stroke="currentColor" stroke-width="2" />
+              </svg>
+              <b>Asphalt</b>
+            </button>
+            <button class="material-tab system-tab" type="button" data-system-tab="stone" aria-pressed="false">
+              <svg class="roof-line-icon" viewBox="0 0 72 48" aria-hidden="true">
+                <path d="M10 38c8-10 18-10 26 0 8-10 18-10 26 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+                <path d="M12 27c7-8 16-8 23 0 7-8 16-8 23 0M16 17c6-6 14-6 20 0 6-6 14-6 20 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+              <b>Stone Coated Steel</b>
+            </button>
           </div>
         </div>
 
-        <div>
+        <div class="material-copy">
           <p class="kicker">Roofing material options</p>
           <h2>Compare metal, asphalt, and stone coated steel roofing.</h2>
           <p>
             The right roof depends on the home, budget, appearance goals, and how long you want the system to perform. Trust Built walks you through the material tradeoffs before you commit to repair or replacement.
           </p>
 
-          <div class="check-list">
-            <button class="check system-tab is-active" type="button" data-system-tab="metal" aria-pressed="true">
-              <span>1</span>
+          <div class="check-list material-list">
+            <button class="check material-card system-tab is-active" type="button" data-system-tab="metal" aria-pressed="true">
+              <span class="material-number">1</span>
               <div>
                 <b>Metal</b>
                 <p>Long service life, crisp roof lines, and strong shed-water performance.</p>
               </div>
+              <svg class="roof-line-icon" viewBox="0 0 72 48" aria-hidden="true">
+                <path d="M12 42 24 10h24l12 32" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
+                <path d="M24 10v32M36 10v32M48 10v32" fill="none" stroke="currentColor" stroke-width="2" />
+              </svg>
             </button>
-            <button class="check system-tab" type="button" data-system-tab="asphalt" aria-pressed="false">
-              <span>2</span>
+            <button class="check material-card system-tab" type="button" data-system-tab="asphalt" aria-pressed="false">
+              <span class="material-number">2</span>
               <div>
                 <b>Asphalt</b>
                 <p>A practical residential option with familiar profiles, colors, and repair paths.</p>
               </div>
+              <svg class="roof-line-icon" viewBox="0 0 72 48" aria-hidden="true">
+                <path d="M10 40h52L54 12H18Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
+                <path d="M16 26h40M22 12v28M36 12v28M50 12v28" fill="none" stroke="currentColor" stroke-width="2" />
+              </svg>
             </button>
-            <button class="check system-tab" type="button" data-system-tab="stone" aria-pressed="false">
-              <span>3</span>
+            <button class="check material-card system-tab" type="button" data-system-tab="stone" aria-pressed="false">
+              <span class="material-number">3</span>
               <div>
                 <b>Stone Coated Steel</b>
                 <p>Steel strength with dimensional texture, premium curb appeal, and weather focus.</p>
               </div>
+              <svg class="roof-line-icon" viewBox="0 0 72 48" aria-hidden="true">
+                <path d="M10 38c8-10 18-10 26 0 8-10 18-10 26 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+                <path d="M12 27c7-8 16-8 23 0 7-8 16-8 23 0M16 17c6-6 14-6 20 0 6-6 14-6 20 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
             </button>
           </div>
 
-          <div class="system-note" data-system-note aria-live="polite">
-            <b data-system-note-title>Metal</b>
+          <div class="system-note material-summary" data-system-note aria-live="polite">
+            <div class="summary-main">
+              <span class="summary-icon" aria-hidden="true">
+                <svg width="25" height="25" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 3 5 6v5c0 4.6 3 7.9 7 10 4-2.1 7-5.4 7-10V6Z" stroke="currentColor" stroke-width="2" />
+                  <path d="m8.5 12.2 2.2 2.2 4.8-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+              <div>
+                <b>Your selected option</b>
+                <h3 data-system-note-title>Metal Roofing</h3>
+              </div>
+            </div>
             <p data-system-note-body>Metal roofing can be a strong fit when the priority is long-term durability, clean panel lines, and a roof system planned around trim, fasteners, ventilation, and water control.</p>
+            <div class="summary-meta" aria-label="Material selection benefits">
+              <span>Local experts</span>
+              <span>Quality materials</span>
+              <span>Built to last</span>
+            </div>
           </div>
+        </div>
+
+        <div class="material-cta">
+          <span class="material-cta-icon" aria-hidden="true">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+              <path d="M7 3v4M17 3v4M4 9h16M6 5h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              <path d="M8 13h.01M12 13h.01M16 13h.01M8 17h.01M12 17h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+            </svg>
+          </span>
+          <div>
+            <h3>Ready to explore your options?</h3>
+            <p>Get a no-obligation inspection and material recommendation tailored to your home.</p>
+          </div>
+          <a class="btn" href="#contact">Schedule inspection <span aria-hidden="true">-&gt;</span></a>
         </div>
       </div>
     </section>
@@ -4005,19 +4327,19 @@
 
       var systemData = {
         metal: {
-          image: "assets/trust-built-roof-jobsite.webp",
-          alt: "Metal roofing material and roof system planning reference",
+          image: "assets/trust-built-completed-roof.webp",
+          alt: "Finished residential roof used to discuss metal roofing options",
           badgeTitle: "Metal roofing.",
           badgeBody: "Built for long-term durability, clean profiles, and strong weather performance.",
-          noteTitle: "Metal",
+          noteTitle: "Metal Roofing",
           noteBody: "Metal roofing can be a strong fit when the priority is long-term durability, clean panel lines, and a roof system planned around trim, fasteners, ventilation, and water control."
         },
         asphalt: {
-          image: "assets/trust-built-completed-roof.webp",
+          image: "assets/roof-hero.jpg",
           alt: "Completed asphalt shingle roof on a residential home",
           badgeTitle: "Asphalt roofing.",
           badgeBody: "A practical, familiar roof choice with strong color range and straightforward repair options.",
-          noteTitle: "Asphalt",
+          noteTitle: "Asphalt Roofing",
           noteBody: "Asphalt shingles are often the most practical residential choice when the homeowner wants reliable protection, flexible color options, clear pricing, and easier future repair paths."
         },
         stone: {
@@ -4025,7 +4347,7 @@
           alt: "Textured roofing material reference for stone coated steel roofing",
           badgeTitle: "Stone coated steel.",
           badgeBody: "Steel strength with a dimensional, textured appearance for premium curb appeal.",
-          noteTitle: "Stone Coated Steel",
+          noteTitle: "Stone Coated Steel Roofing",
           noteBody: "Stone coated steel is a premium option for homeowners who want the strength of steel with a more dimensional roof profile, better curb appeal, and a material conversation beyond standard shingles."
         }
       };
