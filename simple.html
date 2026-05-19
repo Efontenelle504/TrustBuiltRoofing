@@ -1750,6 +1750,17 @@
       text-transform: uppercase;
     }
 
+    .material-tab small {
+      display: block;
+      color: currentColor;
+      font-size: 0.64rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      line-height: 1;
+      opacity: 0.74;
+      text-transform: uppercase;
+    }
+
     .roof-line-icon {
       width: 54px;
       height: 36px;
@@ -1795,6 +1806,23 @@
       transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease, color 180ms ease;
     }
 
+    .material-tier {
+      display: inline-flex;
+      align-items: center;
+      width: max-content;
+      margin-bottom: 5px;
+      padding: 3px 8px;
+      color: var(--bronze);
+      background: rgba(176, 138, 78, 0.1);
+      border: 1px solid rgba(176, 138, 78, 0.22);
+      border-radius: 999px;
+      font-size: 0.66rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
     .check:hover,
     .check.is-active,
     .material-card:hover,
@@ -1814,7 +1842,7 @@
       box-shadow: 0 20px 48px rgba(11, 23, 41, 0.18);
     }
 
-    .check span:first-child,
+    .check > span:first-child,
     .material-number {
       width: 42px;
       height: 42px;
@@ -1827,7 +1855,7 @@
       transition: background 180ms ease, color 180ms ease;
     }
 
-    .check.is-active span:first-child,
+    .check.is-active > span:first-child,
     .material-card.is-active .material-number {
       color: var(--navy-dark);
       background: var(--bronze);
@@ -1843,9 +1871,15 @@
 
     .check.is-active b,
     .check.is-active p,
+    .material-card.is-active .material-tier,
     .material-card.is-active b,
     .material-card.is-active p {
       color: var(--white);
+    }
+
+    .material-card.is-active .material-tier {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.24);
     }
 
     .check p,
@@ -1855,6 +1889,49 @@
       font-size: 0.94rem;
       line-height: 1.5;
       overflow-wrap: break-word;
+    }
+
+    .material-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 7px;
+      margin-top: 11px;
+    }
+
+    .material-metrics span,
+    .summary-stats span {
+      display: grid;
+      gap: 2px;
+      min-width: 0;
+      padding: 8px 9px;
+      color: var(--muted);
+      background: rgba(27, 45, 75, 0.04);
+      border: 1px solid rgba(27, 45, 75, 0.08);
+      border-radius: 5px;
+      font-size: 0.66rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .material-metrics strong,
+    .summary-stats strong {
+      color: var(--navy);
+      font-size: 0.82rem;
+      font-weight: 900;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    .material-card.is-active .material-metrics span {
+      color: rgba(255, 255, 255, 0.68);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.14);
+    }
+
+    .material-card.is-active .material-metrics strong {
+      color: var(--white);
     }
 
     .material-card .roof-line-icon {
@@ -1926,6 +2003,23 @@
       font-size: clamp(2rem, 4vw, 2.8rem);
       font-weight: 400;
       line-height: 0.98;
+    }
+
+    .summary-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin: 18px 0 0;
+    }
+
+    .summary-stats span {
+      color: rgba(255, 255, 255, 0.68);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.13);
+    }
+
+    .summary-stats strong {
+      color: var(--white);
     }
 
     .system-note p,
@@ -2816,6 +2910,10 @@
         font-size: 0.68rem;
       }
 
+      .material-tab small {
+        font-size: 0.56rem;
+      }
+
       .roof-line-icon {
         width: 42px;
         height: 30px;
@@ -2830,6 +2928,11 @@
 
       .material-card .roof-line-icon {
         display: none;
+      }
+
+      .material-metrics,
+      .summary-stats {
+        grid-template-columns: 1fr;
       }
 
       .summary-meta {
@@ -3452,67 +3555,88 @@
     <section id="systems" class="section material-section" data-section="roof-systems" data-section-purpose="Roof material comparison and product confidence">
       <div class="container material-layout">
         <div class="photo-frame material-visual" data-system-frame>
-          <img data-system-image src="assets/trust-built-completed-roof.webp" alt="Finished residential roof used to compare metal, asphalt, and stone coated steel options" loading="lazy" />
+          <img data-system-image src="assets/roof-hero.jpg" alt="Completed asphalt shingle roof used as the good roofing option" loading="lazy" />
           <div class="material-tabs" aria-label="Roof material image selector">
-            <button class="material-tab system-tab is-active" type="button" data-system-tab="metal" aria-pressed="true">
-              <svg class="roof-line-icon" viewBox="0 0 72 48" aria-hidden="true">
-                <path d="M12 42 24 10h24l12 32" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
-                <path d="M24 10v32M36 10v32M48 10v32" fill="none" stroke="currentColor" stroke-width="2" />
-              </svg>
-              <b>Metal</b>
-            </button>
-            <button class="material-tab system-tab" type="button" data-system-tab="asphalt" aria-pressed="false">
+            <button class="material-tab system-tab is-active" type="button" data-system-tab="asphalt" aria-pressed="true">
               <svg class="roof-line-icon" viewBox="0 0 72 48" aria-hidden="true">
                 <path d="M10 40h52L54 12H18Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
                 <path d="M16 26h40M22 12v28M36 12v28M50 12v28" fill="none" stroke="currentColor" stroke-width="2" />
               </svg>
+              <small>Good</small>
               <b>Asphalt</b>
+            </button>
+            <button class="material-tab system-tab" type="button" data-system-tab="metal" aria-pressed="false">
+              <svg class="roof-line-icon" viewBox="0 0 72 48" aria-hidden="true">
+                <path d="M12 42 24 10h24l12 32" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
+                <path d="M24 10v32M36 10v32M48 10v32" fill="none" stroke="currentColor" stroke-width="2" />
+              </svg>
+              <small>Better</small>
+              <b>Metal</b>
             </button>
             <button class="material-tab system-tab" type="button" data-system-tab="stone" aria-pressed="false">
               <svg class="roof-line-icon" viewBox="0 0 72 48" aria-hidden="true">
                 <path d="M10 38c8-10 18-10 26 0 8-10 18-10 26 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
                 <path d="M12 27c7-8 16-8 23 0 7-8 16-8 23 0M16 17c6-6 14-6 20 0 6-6 14-6 20 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
               </svg>
+              <small>Best</small>
               <b>Stone Coated Steel</b>
             </button>
           </div>
         </div>
 
         <div class="material-copy">
-          <p class="kicker">Roofing material options</p>
-          <h2>Compare metal, asphalt, and stone coated steel roofing.</h2>
+          <p class="kicker">Good / better / best roofing options</p>
+          <h2>Compare asphalt, metal, and stone coated steel roofing.</h2>
           <p>
-            The right roof depends on the home, budget, appearance goals, and how long you want the system to perform. Trust Built walks you through the material tradeoffs before you commit to repair or replacement.
+            The right roof depends on budget, expected life, maintenance, curb appeal, and resale value. Trust Built compares the tradeoffs clearly before you commit to repair or replacement.
           </p>
 
           <div class="check-list material-list">
-            <button class="check material-card system-tab is-active" type="button" data-system-tab="metal" aria-pressed="true">
+            <button class="check material-card system-tab is-active" type="button" data-system-tab="asphalt" aria-pressed="true">
               <span class="material-number">1</span>
               <div>
-                <b>Metal</b>
-                <p>Long service life, crisp roof lines, and strong shed-water performance.</p>
-              </div>
-              <svg class="roof-line-icon" viewBox="0 0 72 48" aria-hidden="true">
-                <path d="M12 42 24 10h24l12 32" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
-                <path d="M24 10v32M36 10v32M48 10v32" fill="none" stroke="currentColor" stroke-width="2" />
-              </svg>
-            </button>
-            <button class="check material-card system-tab" type="button" data-system-tab="asphalt" aria-pressed="false">
-              <span class="material-number">2</span>
-              <div>
+                <span class="material-tier">Good</span>
                 <b>Asphalt</b>
-                <p>A practical residential option with familiar profiles, colors, and repair paths.</p>
+                <p>Practical value, familiar appearance, broad color options, and simpler future repairs.</p>
+                <div class="material-metrics" aria-label="Asphalt comparison metrics">
+                  <span><strong>20-30 yrs</strong> Expected life</span>
+                  <span><strong>Moderate</strong> Maintenance</span>
+                  <span><strong>Strong</strong> Budget ROI</span>
+                </div>
               </div>
               <svg class="roof-line-icon" viewBox="0 0 72 48" aria-hidden="true">
                 <path d="M10 40h52L54 12H18Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
                 <path d="M16 26h40M22 12v28M36 12v28M50 12v28" fill="none" stroke="currentColor" stroke-width="2" />
               </svg>
             </button>
+            <button class="check material-card system-tab" type="button" data-system-tab="metal" aria-pressed="false">
+              <span class="material-number">2</span>
+              <div>
+                <span class="material-tier">Better</span>
+                <b>Metal</b>
+                <p>Long service life, lower upkeep, crisp roof lines, and strong shed-water performance.</p>
+                <div class="material-metrics" aria-label="Metal comparison metrics">
+                  <span><strong>40-70 yrs</strong> Expected life</span>
+                  <span><strong>Low</strong> Maintenance</span>
+                  <span><strong>High</strong> Long-term ROI</span>
+                </div>
+              </div>
+              <svg class="roof-line-icon" viewBox="0 0 72 48" aria-hidden="true">
+                <path d="M12 42 24 10h24l12 32" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
+                <path d="M24 10v32M36 10v32M48 10v32" fill="none" stroke="currentColor" stroke-width="2" />
+              </svg>
+            </button>
             <button class="check material-card system-tab" type="button" data-system-tab="stone" aria-pressed="false">
               <span class="material-number">3</span>
               <div>
+                <span class="material-tier">Best</span>
                 <b>Stone Coated Steel</b>
-                <p>Steel strength with dimensional texture, premium curb appeal, and weather focus.</p>
+                <p>Steel strength, dimensional texture, premium curb appeal, and strong storm-focused value.</p>
+                <div class="material-metrics" aria-label="Stone coated steel comparison metrics">
+                  <span><strong>50+ yrs</strong> Expected life</span>
+                  <span><strong>Low</strong> Maintenance</span>
+                  <span><strong>Premium</strong> ROI profile</span>
+                </div>
               </div>
               <svg class="roof-line-icon" viewBox="0 0 72 48" aria-hidden="true">
                 <path d="M10 38c8-10 18-10 26 0 8-10 18-10 26 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
@@ -3531,14 +3655,19 @@
               </span>
               <div>
                 <b>Your selected option</b>
-                <h3 data-system-note-title>Metal Roofing</h3>
+                <h3 data-system-note-title>Good: Asphalt Roofing</h3>
               </div>
             </div>
-            <p data-system-note-body>Metal roofing can be a strong fit when the priority is long-term durability, clean panel lines, and a roof system planned around trim, fasteners, ventilation, and water control.</p>
-            <div class="summary-meta" aria-label="Material selection benefits">
-              <span>Local experts</span>
-              <span>Quality materials</span>
-              <span>Built to last</span>
+            <p data-system-note-body>Asphalt shingles are often the strongest value choice when the homeowner wants dependable protection, familiar appearance, manageable upfront cost, and practical repair options.</p>
+            <div class="summary-stats" aria-label="Selected material comparison metrics">
+              <span><strong data-system-life>20-30 yrs</strong> Expected life</span>
+              <span><strong data-system-maintenance>Moderate</strong> Maintenance</span>
+              <span><strong data-system-roi>Strong budget ROI</strong> Value profile</span>
+            </div>
+            <div class="summary-meta" aria-label="Comparison note">
+              <span>Planning ranges</span>
+              <span>Install quality matters</span>
+              <span>Product specs vary</span>
             </div>
           </div>
         </div>
@@ -4326,29 +4455,38 @@
       }
 
       var systemData = {
+        asphalt: {
+          image: "assets/roof-hero.jpg",
+          alt: "Completed asphalt shingle roof used as the good roofing option",
+          badgeTitle: "Asphalt roofing.",
+          badgeBody: "A practical, familiar roof choice with strong color range and straightforward repair options.",
+          noteTitle: "Good: Asphalt Roofing",
+          noteBody: "Asphalt shingles are often the strongest value choice when the homeowner wants dependable protection, familiar appearance, manageable upfront cost, and practical repair options.",
+          life: "20-30 yrs",
+          maintenance: "Moderate",
+          roi: "Strong budget ROI"
+        },
         metal: {
           image: "assets/trust-built-completed-roof.webp",
           alt: "Finished residential roof used to discuss metal roofing options",
           badgeTitle: "Metal roofing.",
           badgeBody: "Built for long-term durability, clean profiles, and strong weather performance.",
-          noteTitle: "Metal Roofing",
-          noteBody: "Metal roofing can be a strong fit when the priority is long-term durability, clean panel lines, and a roof system planned around trim, fasteners, ventilation, and water control."
-        },
-        asphalt: {
-          image: "assets/roof-hero.jpg",
-          alt: "Completed asphalt shingle roof on a residential home",
-          badgeTitle: "Asphalt roofing.",
-          badgeBody: "A practical, familiar roof choice with strong color range and straightforward repair options.",
-          noteTitle: "Asphalt Roofing",
-          noteBody: "Asphalt shingles are often the most practical residential choice when the homeowner wants reliable protection, flexible color options, clear pricing, and easier future repair paths."
+          noteTitle: "Better: Metal Roofing",
+          noteBody: "Metal roofing fits homeowners who want a longer service life, lower routine maintenance, clean panel lines, and a stronger long-term ownership value conversation.",
+          life: "40-70 yrs",
+          maintenance: "Low",
+          roi: "High long-term ROI"
         },
         stone: {
           image: "assets/roof-texture.jpg",
           alt: "Textured roofing material reference for stone coated steel roofing",
           badgeTitle: "Stone coated steel.",
           badgeBody: "Steel strength with a dimensional, textured appearance for premium curb appeal.",
-          noteTitle: "Stone Coated Steel Roofing",
-          noteBody: "Stone coated steel is a premium option for homeowners who want the strength of steel with a more dimensional roof profile, better curb appeal, and a material conversation beyond standard shingles."
+          noteTitle: "Best: Stone Coated Steel Roofing",
+          noteBody: "Stone coated steel is the premium path for homeowners who want steel durability, dimensional curb appeal, low upkeep, and a roof that can help support long-term home value.",
+          life: "50+ yrs",
+          maintenance: "Low",
+          roi: "Premium ROI profile"
         }
       };
 
@@ -4359,6 +4497,9 @@
       var systemNote = document.querySelector("[data-system-note]");
       var systemNoteTitle = document.querySelector("[data-system-note-title]");
       var systemNoteBody = document.querySelector("[data-system-note-body]");
+      var systemLife = document.querySelector("[data-system-life]");
+      var systemMaintenance = document.querySelector("[data-system-maintenance]");
+      var systemRoi = document.querySelector("[data-system-roi]");
       var systemTabs = Array.prototype.slice.call(document.querySelectorAll("[data-system-tab]"));
 
       function setSystem(key) {
@@ -4383,6 +4524,9 @@
           if (systemBadgeBody) systemBadgeBody.textContent = next.badgeBody;
           if (systemNoteTitle) systemNoteTitle.textContent = next.noteTitle;
           if (systemNoteBody) systemNoteBody.textContent = next.noteBody;
+          if (systemLife) systemLife.textContent = next.life;
+          if (systemMaintenance) systemMaintenance.textContent = next.maintenance;
+          if (systemRoi) systemRoi.textContent = next.roi;
 
           window.setTimeout(function () {
             if (systemFrame) systemFrame.classList.remove("is-changing");
