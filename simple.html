@@ -938,6 +938,23 @@
         linear-gradient(180deg, #fbfaf7, var(--white));
     }
 
+    .receive-section {
+      position: relative;
+      z-index: 3;
+      padding: 0 0 34px;
+      background:
+        radial-gradient(circle at 50% -30%, rgba(176, 138, 78, 0.08), transparent 34%),
+        linear-gradient(180deg, #fbfaf7 0%, #f8f5ed 100%);
+    }
+
+    .receive-section .receive-band {
+      margin-top: -42px;
+    }
+
+    .local-proof .receive-band {
+      display: none;
+    }
+
     .proof-board {
       display: grid;
       gap: 28px;
@@ -1339,9 +1356,11 @@
     .receive-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
+      counter-reset: receive-item;
     }
 
     .receive-item {
+      counter-increment: receive-item;
       padding: 0 24px;
       text-align: center;
       border-right: 1px solid rgba(255, 255, 255, 0.16);
@@ -1352,9 +1371,24 @@
     }
 
     .receive-icon {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      margin: 0 auto;
       color: var(--bronze-light);
-      font-size: 2.3rem;
+      font-size: 0;
+      font-weight: 900;
       line-height: 1;
+      border: 2px solid rgba(176, 138, 78, 0.78);
+      border-radius: 50%;
+      background: rgba(176, 138, 78, 0.08);
+    }
+
+    .receive-icon::before {
+      content: counter(receive-item, decimal-leading-zero);
+      font-size: 0.86rem;
+      letter-spacing: 0.08em;
     }
 
     .receive-item h3 {
@@ -2831,6 +2865,14 @@
         padding: 22px;
       }
 
+      .receive-section {
+        padding: 28px 0 22px;
+      }
+
+      .receive-section .receive-band {
+        margin-top: 0;
+      }
+
       .receive-title {
         grid-template-columns: 1fr;
         gap: 0;
@@ -2954,6 +2996,10 @@
 
       .section {
         padding: 54px 0;
+      }
+
+      .receive-section {
+        padding: 22px 0 18px;
       }
 
       .proof-strip {
@@ -3353,6 +3399,36 @@
           </form>
           <p class="fine-print">No pressure. By submitting, you agree to be contacted about your roof.</p>
         </aside>
+      </div>
+    </section>
+
+    <section class="receive-section" data-section="estimate-deliverables" data-section-purpose="Roof check deliverables shown immediately after the hero">
+      <div class="container">
+        <div class="receive-band">
+          <div class="receive-title">What you receive</div>
+          <div class="receive-grid">
+            <div class="receive-item">
+              <div class="receive-icon">â–£</div>
+              <h3>Roof Details Documented</h3>
+              <p>Roof photos tied to the actual issue, so you can see what we see.</p>
+            </div>
+            <div class="receive-item">
+              <div class="receive-icon">â˜‘</div>
+              <h3>Repair vs. Replacement</h3>
+              <p>Urgent fixes are separated from full replacement recommendations.</p>
+            </div>
+            <div class="receive-item">
+              <div class="receive-icon">â˜‚</div>
+              <h3>Plan Of Action Tailored To Client Needs</h3>
+              <p>Materials, scope, timing, and priorities are matched to the home.</p>
+            </div>
+            <div class="receive-item">
+              <div class="receive-icon">âŒ–</div>
+              <h3>Clear Next Steps</h3>
+              <p>Know what needs attention now, what can wait, and what the next move costs.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
