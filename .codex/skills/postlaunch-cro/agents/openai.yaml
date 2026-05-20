@@ -1,0 +1,4 @@
+interface:
+  display_name: "Postlaunch CRO"
+  short_description: "30/60/90 day conversion and search optimization plan."
+  default_prompt: "Create a post-launch CRO and SEO optimization backlog with analytics events, tests, photo replacements, and growth priorities."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Launch Readiness Audit"
+  short_description: "Final go/no-go website launch audit."
+  default_prompt: "Run a final launch readiness audit across UX, CRO, visual quality, forms, links, SEO, accessibility, performance basics, and blockers."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Hyper Critique"
+  short_description: "10/10 red-team critique for premium website quality."
+  default_prompt: "Run a ruthless launch-killer critique of this website or design. Score visual quality, conversion, trust, copy, mobile UX, SEO/AEO, and premium feel. Block anything below the stated bar."

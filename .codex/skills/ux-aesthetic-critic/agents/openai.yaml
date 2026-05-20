@@ -1,0 +1,4 @@
+interface:
+  display_name: "UX Aesthetic Critic"
+  short_description: "Critical UX and visual polish review for frontend changes."
+  default_prompt: "Critique this design with strict UX, conversion, accessibility, and aesthetic standards. Return prioritized fixes with evidence."

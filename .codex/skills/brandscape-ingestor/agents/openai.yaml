@@ -1,0 +1,4 @@
+interface:
+  display_name: "Brandscape Ingestor"
+  short_description: "Convert brand assets into enforceable web design rules."
+  default_prompt: "Ingest the brandscape and produce web-ready brand rules, tokens, voice, image direction, and anti-patterns."

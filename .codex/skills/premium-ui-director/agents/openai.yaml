@@ -1,0 +1,4 @@
+interface:
+  display_name: "Premium UI Director"
+  short_description: "Premium visual direction for websites."
+  default_prompt: "Define premium website UI direction, visual hierarchy, typography, spacing, section rhythm, interaction rules, and anti-cheap-template fixes."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Turnkey Website"
+  short_description: "End-to-end $100k website production operating system."
+  default_prompt: "Run the turnkey website operating system from strategy through launch QA using gated specialist skills and critics."

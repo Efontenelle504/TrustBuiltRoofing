@@ -1,0 +1,4 @@
+interface:
+  display_name: "CRO Wireframe"
+  short_description: "Create conversion-first website and landing-page structures."
+  default_prompt: "Create a conversion-first wireframe with section order, CTA placement, trust proof, objection handling, and mobile funnel."

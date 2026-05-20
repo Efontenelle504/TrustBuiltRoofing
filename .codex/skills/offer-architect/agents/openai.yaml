@@ -1,0 +1,4 @@
+interface:
+  display_name: "Offer Architect"
+  short_description: "Define the commercial offer and CTA hierarchy before design."
+  default_prompt: "Build the website offer strategy, objections, trust angle, urgency, and CTA hierarchy before wireframing."

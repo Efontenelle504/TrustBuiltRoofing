@@ -1,0 +1,4 @@
+interface:
+  display_name: "Photo Shot Director"
+  short_description: "Turn images and placeholders into trust-building shot direction."
+  default_prompt: "Create a page-by-page photo shot list that explains image purpose, framing, replacement needs, and trust impact."

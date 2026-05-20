@@ -1,0 +1,4 @@
+interface:
+  display_name: "Local SEO AI Search"
+  short_description: "Local service SEO and AI-search structure for websites."
+  default_prompt: "Create local SEO and AI-search structure: service intent, headings, schema, FAQs, internal links, metadata, and llms/sitemap guidance."
