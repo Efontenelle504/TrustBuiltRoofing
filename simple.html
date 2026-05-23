@@ -1692,6 +1692,21 @@
       width: min(1380px, calc(100% - 80px));
     }
 
+    .material-layout {
+      align-items: start;
+    }
+
+    .material-side {
+      min-width: 0;
+      display: grid;
+      gap: 18px;
+      align-content: start;
+    }
+
+    .material-side .material-summary {
+      margin-top: 0;
+    }
+
     .photo-frame,
     .material-visual {
       position: relative;
@@ -3630,33 +3645,61 @@
 
     <section id="systems" class="section material-section" data-section="roof-systems" data-section-purpose="Roof material comparison and product confidence">
       <div class="container material-layout">
-        <div class="photo-frame material-visual" data-system-frame>
-          <img data-system-image src="assets/roof-hero.jpg" alt="Completed asphalt shingle roof used as the good roofing option" loading="lazy" />
-          <div class="material-tabs" aria-label="Roof material image selector">
-            <button class="material-tab system-tab is-active" type="button" data-system-tab="asphalt" aria-pressed="true">
-              <svg class="roof-line-icon" viewBox="0 0 72 48" aria-hidden="true">
-                <path d="M10 40h52L54 12H18Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
-                <path d="M16 26h40M22 12v28M36 12v28M50 12v28" fill="none" stroke="currentColor" stroke-width="2" />
-              </svg>
-              <small>Good</small>
-              <b>Asphalt</b>
-            </button>
-            <button class="material-tab system-tab" type="button" data-system-tab="metal" aria-pressed="false">
-              <svg class="roof-line-icon" viewBox="0 0 72 48" aria-hidden="true">
-                <path d="M12 42 24 10h24l12 32" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
-                <path d="M24 10v32M36 10v32M48 10v32" fill="none" stroke="currentColor" stroke-width="2" />
-              </svg>
-              <small>Better</small>
-              <b>Metal</b>
-            </button>
-            <button class="material-tab system-tab" type="button" data-system-tab="stone" aria-pressed="false">
-              <svg class="roof-line-icon" viewBox="0 0 72 48" aria-hidden="true">
-                <path d="M10 38c8-10 18-10 26 0 8-10 18-10 26 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
-                <path d="M12 27c7-8 16-8 23 0 7-8 16-8 23 0M16 17c6-6 14-6 20 0 6-6 14-6 20 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-              </svg>
-              <small>Best</small>
-              <b>Stone Coated Steel</b>
-            </button>
+        <div class="material-side">
+          <div class="photo-frame material-visual" data-system-frame>
+            <img data-system-image src="assets/roof-hero.jpg" alt="Completed asphalt shingle roof used as the good roofing option" loading="lazy" />
+            <div class="material-tabs" aria-label="Roof material image selector">
+              <button class="material-tab system-tab is-active" type="button" data-system-tab="asphalt" aria-pressed="true">
+                <svg class="roof-line-icon" viewBox="0 0 72 48" aria-hidden="true">
+                  <path d="M10 40h52L54 12H18Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
+                  <path d="M16 26h40M22 12v28M36 12v28M50 12v28" fill="none" stroke="currentColor" stroke-width="2" />
+                </svg>
+                <small>Good</small>
+                <b>Asphalt</b>
+              </button>
+              <button class="material-tab system-tab" type="button" data-system-tab="metal" aria-pressed="false">
+                <svg class="roof-line-icon" viewBox="0 0 72 48" aria-hidden="true">
+                  <path d="M12 42 24 10h24l12 32" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
+                  <path d="M24 10v32M36 10v32M48 10v32" fill="none" stroke="currentColor" stroke-width="2" />
+                </svg>
+                <small>Better</small>
+                <b>Metal</b>
+              </button>
+              <button class="material-tab system-tab" type="button" data-system-tab="stone" aria-pressed="false">
+                <svg class="roof-line-icon" viewBox="0 0 72 48" aria-hidden="true">
+                  <path d="M10 38c8-10 18-10 26 0 8-10 18-10 26 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+                  <path d="M12 27c7-8 16-8 23 0 7-8 16-8 23 0M16 17c6-6 14-6 20 0 6-6 14-6 20 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+                <small>Best</small>
+                <b>Stone Coated Steel</b>
+              </button>
+            </div>
+          </div>
+
+          <div class="system-note material-summary" data-system-note aria-live="polite">
+            <div class="summary-main">
+              <span class="summary-icon" aria-hidden="true">
+                <svg width="25" height="25" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 3 5 6v5c0 4.6 3 7.9 7 10 4-2.1 7-5.4 7-10V6Z" stroke="currentColor" stroke-width="2" />
+                  <path d="m8.5 12.2 2.2 2.2 4.8-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+              <div>
+                <b>Your selected option</b>
+                <h3 data-system-note-title>Good: Asphalt Roofing</h3>
+              </div>
+            </div>
+            <p data-system-note-body>Asphalt shingles are often the strongest value choice when the homeowner wants dependable protection, familiar appearance, manageable upfront cost, and practical repair options.</p>
+            <div class="summary-stats" aria-label="Selected material comparison metrics">
+              <span><strong data-system-life>20-30 yrs</strong> Expected life</span>
+              <span><strong data-system-maintenance>Moderate</strong> Maintenance</span>
+              <span><strong data-system-roi>Strong budget ROI</strong> Value profile</span>
+            </div>
+            <div class="summary-meta" aria-label="Comparison note">
+              <span>Planning ranges</span>
+              <span>Install quality matters</span>
+              <span>Product specs vary</span>
+            </div>
           </div>
         </div>
 
@@ -3719,32 +3762,6 @@
                 <path d="M12 27c7-8 16-8 23 0 7-8 16-8 23 0M16 17c6-6 14-6 20 0 6-6 14-6 20 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
               </svg>
             </button>
-          </div>
-
-          <div class="system-note material-summary" data-system-note aria-live="polite">
-            <div class="summary-main">
-              <span class="summary-icon" aria-hidden="true">
-                <svg width="25" height="25" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 3 5 6v5c0 4.6 3 7.9 7 10 4-2.1 7-5.4 7-10V6Z" stroke="currentColor" stroke-width="2" />
-                  <path d="m8.5 12.2 2.2 2.2 4.8-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </span>
-              <div>
-                <b>Your selected option</b>
-                <h3 data-system-note-title>Good: Asphalt Roofing</h3>
-              </div>
-            </div>
-            <p data-system-note-body>Asphalt shingles are often the strongest value choice when the homeowner wants dependable protection, familiar appearance, manageable upfront cost, and practical repair options.</p>
-            <div class="summary-stats" aria-label="Selected material comparison metrics">
-              <span><strong data-system-life>20-30 yrs</strong> Expected life</span>
-              <span><strong data-system-maintenance>Moderate</strong> Maintenance</span>
-              <span><strong data-system-roi>Strong budget ROI</strong> Value profile</span>
-            </div>
-            <div class="summary-meta" aria-label="Comparison note">
-              <span>Planning ranges</span>
-              <span>Install quality matters</span>
-              <span>Product specs vary</span>
-            </div>
           </div>
         </div>
 
