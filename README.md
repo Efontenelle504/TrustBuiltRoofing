@@ -76,16 +76,20 @@ After that, `scripts/build-static-pages.mjs` generates the static service, servi
 
 Deploy the `dist/` folder, not the repository root.
 
-## Static form handling
+## SiteGround form handling
 
-The homepage estimate forms use Netlify Forms attributes:
+The estimate forms post to `/lead.php`, which is copied from `public/lead.php` into `dist/` during `npm run build`.
 
-- `data-netlify="true"`
-- `netlify-honeypot="bot-field"`
-- hidden `form-name` inputs
-- `method="post"` with `action="/thank-you/"`
+The PHP handler:
 
-`netlify.toml` is included so Netlify can run `npm run build` and publish `dist/`. After deployment, submit one test lead and confirm it appears in the hosting form inbox or notification workflow. If you deploy somewhere other than Netlify, replace the form attributes or action endpoint with that platform's form handler before launch.
+- sends lead details to `info@trustbuiltroofing.com`
+- supports optional roof photo attachments
+- uses the existing honeypot field
+- redirects successful submissions to `/thank-you/`
+
+Before launch on SiteGround, confirm `info@trustbuiltroofing.com` exists as a working mailbox or forwarder. After upload, submit one test lead and confirm the email arrives. If email deliverability is weak, replace PHP `mail()` with authenticated SMTP.
+
+`netlify.toml` remains in the repo for compatibility, but SiteGround deployment should publish the built `dist/` contents to the domain `public_html` folder.
 
 ## SEO and AI discovery files
 

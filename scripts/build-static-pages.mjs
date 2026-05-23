@@ -227,7 +227,7 @@ function relatedCards(page, prefix) {
 
 function appointmentForm(page) {
   const name = formName(page);
-  return `<form class="form-card" name="${name}" action="/thank-you/" method="post" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data">
+  return `<form class="form-card" name="${name}" action="/lead.php" method="post" enctype="multipart/form-data">
       <input type="hidden" name="form-name" value="${name}" />
       <input type="hidden" name="utm_source" value="" />
       <input type="hidden" name="utm_medium" value="" />
