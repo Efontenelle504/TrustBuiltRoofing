@@ -2138,6 +2138,132 @@
       gap: 10px;
     }
 
+    .review-section {
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+      background: var(--white);
+    }
+
+    .review-shell {
+      position: relative;
+      width: 100%;
+      min-height: 560px;
+      display: grid;
+      align-items: center;
+    }
+
+    .review-photo {
+      position: absolute;
+      inset: 0;
+      margin: 0;
+      overflow: hidden;
+      background: var(--navy);
+    }
+
+    .review-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(11, 23, 41, 0.06) 0%, rgba(11, 23, 41, 0.02) 52%, rgba(11, 23, 41, 0.22) 100%),
+        linear-gradient(0deg, rgba(11, 23, 41, 0.08), rgba(11, 23, 41, 0));
+    }
+
+    .review-photo img {
+      width: 100%;
+      height: 100%;
+      min-height: 560px;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .review-photo figcaption {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+    }
+
+    .review-card {
+      position: relative;
+      z-index: 2;
+      min-width: 0;
+      display: grid;
+      justify-self: end;
+      width: min(520px, calc(100% - 48px));
+      margin-right: max(5vw, 48px);
+      padding: clamp(28px, 3.5vw, 44px);
+      color: var(--ink);
+      background: rgba(255, 255, 255, 0.94);
+      border-top: 5px solid var(--bronze);
+      border-radius: 3px;
+      box-shadow: 0 30px 70px rgba(11, 23, 41, 0.24);
+    }
+
+    .review-card h2 {
+      max-width: 620px;
+      color: var(--navy);
+      font-size: clamp(2rem, 3.3vw, 3rem);
+    }
+
+    .review-card > p {
+      max-width: 620px;
+      color: var(--muted);
+    }
+
+    .review-quote {
+      margin: 20px 0 0;
+      padding-top: 18px;
+      border-top: 1px solid rgba(27, 45, 75, 0.12);
+    }
+
+    .review-quote small {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--bronze);
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .review-quote p {
+      margin: 0;
+      color: var(--navy-dark);
+      font-size: clamp(1.15rem, 2vw, 1.45rem);
+      font-weight: 900;
+      line-height: 1.35;
+    }
+
+    .review-proof-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin: 22px 0 0;
+    }
+
+    .review-proof-list span {
+      padding: 10px 9px;
+      color: var(--navy);
+      background: #f8fafc;
+      border: 1px solid rgba(27, 45, 75, 0.12);
+      border-radius: 5px;
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.07em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .review-card .btn {
+      width: max-content;
+      margin-top: 22px;
+    }
+
     .card-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -2574,6 +2700,7 @@
       .proof-stage,
       .split,
       .material-layout,
+      .review-shell,
       .area-grid,
       .contact-grid,
       .answer-band,
@@ -2618,6 +2745,10 @@
       .material-cta .btn {
         grid-column: 1 / -1;
         width: 100%;
+      }
+
+      .review-shell {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -3003,6 +3134,36 @@
 
       .material-cta .btn {
         min-width: 0;
+      }
+
+      .review-photo,
+      .review-photo img {
+        min-height: 640px;
+      }
+
+      .review-photo img {
+        object-position: 32% center;
+      }
+
+      .review-shell {
+        min-height: 640px;
+        align-items: end;
+        padding: 22px 0;
+      }
+
+      .review-proof-list {
+        grid-template-columns: 1fr;
+      }
+
+      .review-card {
+        justify-self: center;
+        width: min(362px, calc(100% - 28px));
+        margin: 0;
+        padding: 22px;
+      }
+
+      .review-card .btn {
+        width: 100%;
       }
 
       .system-note {
@@ -3776,6 +3937,30 @@
             <p>Get a no-obligation inspection and material recommendation tailored to your home.</p>
           </div>
           <a class="btn" href="#contact">Schedule inspection <span aria-hidden="true">-&gt;</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews" class="section review-section" data-section="review-placeholder" data-section-purpose="Launch review section with replacement direction for a real customer quote">
+      <div class="review-shell">
+        <figure class="review-photo">
+          <img src="assets/review-stone-coated-couple.png" alt="Older homeowner couple standing in front of a completed stone coated steel roof" loading="lazy" />
+          <figcaption>Placeholder shot direction: replace with a real Trust Built customer photo after written permission.</figcaption>
+        </figure>
+        <div class="review-card">
+          <p class="kicker">Customer story</p>
+          <h2>Stone coated steel roofing with a finished-home feel.</h2>
+          <p>This review placement is built for a real homeowner photo, completed roof backdrop, and a direct quote about the project experience.</p>
+          <div class="review-quote">
+            <small>Replace with real customer quote</small>
+            <p>"Use this space for the homeowner's actual review after the project is complete."</p>
+          </div>
+          <div class="review-proof-list" aria-label="Review photo requirements">
+            <span>Roof visible</span>
+            <span>Permission secured</span>
+            <span>Real quote only</span>
+          </div>
+          <a class="btn" href="#contact">Request a roof estimate</a>
         </div>
       </div>
     </section>
