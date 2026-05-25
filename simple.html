@@ -1733,10 +1733,12 @@
     }
 
     .material-section .container {
-      width: min(1380px, calc(100% - 80px));
+      width: min(1180px, calc(100% - 64px));
     }
 
     .material-layout {
+      grid-template-columns: minmax(360px, 0.94fr) minmax(0, 1.06fr);
+      gap: 42px;
       align-items: start;
     }
 
@@ -1754,7 +1756,7 @@
     .photo-frame,
     .material-visual {
       position: relative;
-      min-height: 520px;
+      min-height: 470px;
       overflow: hidden;
       border: 1px solid rgba(27, 45, 75, 0.12);
       border-radius: 7px;
@@ -1785,7 +1787,7 @@
     .material-visual img {
       width: 100%;
       height: 100%;
-      min-height: 520px;
+      min-height: 470px;
       object-fit: cover;
       transition: opacity 220ms ease, transform 420ms ease;
     }
@@ -1796,62 +1798,36 @@
       transform: scale(1.025);
     }
 
-    .material-tabs {
+    .material-image-caption {
       position: absolute;
       left: 22px;
       right: 22px;
       bottom: 22px;
       z-index: 2;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      border-radius: 7px;
-      background: rgba(11, 23, 41, 0.92);
-      backdrop-filter: blur(10px);
-    }
-
-    .material-tab {
-      min-height: 112px;
-      display: grid;
-      place-items: center;
-      gap: 9px;
-      padding: 16px 10px;
+      max-width: 430px;
+      padding: 18px 20px;
       color: var(--white);
-      background: transparent;
-      border: 0;
-      border-right: 1px solid rgba(255, 255, 255, 0.18);
-      cursor: pointer;
-      transition: background 180ms ease, color 180ms ease;
+      background: rgba(11, 23, 41, 0.9);
+      border-left: 4px solid var(--bronze);
+      border-radius: 7px;
+      box-shadow: 0 18px 36px rgba(11, 23, 41, 0.2);
     }
 
-    .material-tab:last-child {
-      border-right: 0;
-    }
-
-    .material-tab.is-active {
-      color: var(--navy-dark);
-      background: linear-gradient(135deg, var(--bronze-light), var(--bronze));
-    }
-
-    .material-tab b {
-      font-size: 0.78rem;
-      font-weight: 900;
-      letter-spacing: 0.04em;
-      line-height: 1.16;
-      text-align: center;
-      text-transform: uppercase;
-    }
-
-    .material-tab small {
+    .material-image-caption b {
       display: block;
-      color: currentColor;
-      font-size: 0.64rem;
+      margin-bottom: 4px;
+      color: var(--bronze-light);
+      font-size: 0.75rem;
       font-weight: 900;
       letter-spacing: 0.1em;
-      line-height: 1;
-      opacity: 0.74;
       text-transform: uppercase;
+    }
+
+    .material-image-caption span {
+      display: block;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 0.92rem;
+      line-height: 1.45;
     }
 
     .roof-line-icon {
@@ -1883,11 +1859,11 @@
     .check,
     .material-card {
       display: grid;
-      grid-template-columns: 48px 1fr 82px;
-      gap: 18px;
+      grid-template-columns: 46px 1fr;
+      gap: 16px;
       align-items: center;
       width: 100%;
-      min-height: 104px;
+      min-height: 0;
       padding: 18px 20px;
       background: rgba(255, 255, 255, 0.86);
       border: 1px solid rgba(27, 45, 75, 0.14);
@@ -1920,7 +1896,7 @@
     .check.is-active,
     .material-card:hover,
     .material-card.is-active {
-      transform: translateX(4px);
+      transform: none;
       border-color: rgba(176, 138, 78, 0.86);
       background: var(--white);
       box-shadow: 0 18px 42px rgba(11, 23, 41, 0.12);
@@ -1928,11 +1904,11 @@
 
     .check.is-active,
     .material-card.is-active {
-      color: var(--white);
-      background:
-        radial-gradient(circle at 92% 26%, rgba(176, 138, 78, 0.18), transparent 25%),
-        linear-gradient(135deg, var(--navy), var(--navy-dark));
-      box-shadow: 0 20px 48px rgba(11, 23, 41, 0.18);
+      color: inherit;
+      background: var(--white);
+      box-shadow:
+        inset 4px 0 0 var(--bronze),
+        0 18px 38px rgba(11, 23, 41, 0.12);
     }
 
     .check > span:first-child,
@@ -1967,12 +1943,17 @@
     .material-card.is-active .material-tier,
     .material-card.is-active b,
     .material-card.is-active p {
-      color: var(--white);
+      color: var(--navy);
     }
 
     .material-card.is-active .material-tier {
-      background: rgba(255, 255, 255, 0.12);
-      border-color: rgba(255, 255, 255, 0.24);
+      color: var(--bronze);
+      background: rgba(176, 138, 78, 0.1);
+      border-color: rgba(176, 138, 78, 0.22);
+    }
+
+    .material-card.is-active p {
+      color: var(--muted);
     }
 
     .check p,
@@ -2018,21 +1999,17 @@
     }
 
     .material-card.is-active .material-metrics span {
-      color: rgba(255, 255, 255, 0.68);
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.14);
+      color: var(--muted);
+      background: rgba(27, 45, 75, 0.04);
+      border-color: rgba(27, 45, 75, 0.08);
     }
 
     .material-card.is-active .material-metrics strong {
-      color: var(--white);
+      color: var(--navy);
     }
 
     .material-card .roof-line-icon {
-      justify-self: end;
-      width: 68px;
-      height: 46px;
-      color: var(--navy);
-      opacity: 0.9;
+      display: none;
     }
 
     .material-card.is-active .roof-line-icon {
@@ -3145,25 +3122,6 @@
         min-height: 430px;
       }
 
-      .material-tabs {
-        left: 12px;
-        right: 12px;
-        bottom: 12px;
-      }
-
-      .material-tab {
-        min-height: 88px;
-        padding: 12px 6px;
-      }
-
-      .material-tab b {
-        font-size: 0.68rem;
-      }
-
-      .material-tab small {
-        font-size: 0.56rem;
-      }
-
       .roof-line-icon {
         width: 42px;
         height: 30px;
@@ -3881,35 +3839,13 @@
         <div class="material-side">
           <div class="photo-frame material-visual" data-system-frame>
             <img data-system-image src="assets/roof-hero.jpg" alt="Completed asphalt shingle roof used as the good roofing option" loading="lazy" />
-            <div class="material-tabs" aria-label="Roof material image selector">
-              <button class="material-tab system-tab is-active" type="button" data-system-tab="asphalt" aria-pressed="true">
-                <svg class="roof-line-icon" viewBox="0 0 72 48" aria-hidden="true">
-                  <path d="M10 40h52L54 12H18Z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
-                  <path d="M16 26h40M22 12v28M36 12v28M50 12v28" fill="none" stroke="currentColor" stroke-width="2" />
-                </svg>
-                <small>Good</small>
-                <b>Asphalt</b>
-              </button>
-              <button class="material-tab system-tab" type="button" data-system-tab="metal" aria-pressed="false">
-                <svg class="roof-line-icon" viewBox="0 0 72 48" aria-hidden="true">
-                  <path d="M12 42 24 10h24l12 32" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
-                  <path d="M24 10v32M36 10v32M48 10v32" fill="none" stroke="currentColor" stroke-width="2" />
-                </svg>
-                <small>Better</small>
-                <b>Metal</b>
-              </button>
-              <button class="material-tab system-tab" type="button" data-system-tab="stone" aria-pressed="false">
-                <svg class="roof-line-icon" viewBox="0 0 72 48" aria-hidden="true">
-                  <path d="M10 38c8-10 18-10 26 0 8-10 18-10 26 0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
-                  <path d="M12 27c7-8 16-8 23 0 7-8 16-8 23 0M16 17c6-6 14-6 20 0 6-6 14-6 20 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                </svg>
-                <small>Best</small>
-                <b>Stone Coated Steel</b>
-              </button>
+            <div class="material-image-caption" aria-live="polite">
+              <b data-system-badge-title>Asphalt roofing.</b>
+              <span data-system-badge-body>A practical, familiar roof choice with strong color range and straightforward repair options.</span>
             </div>
           </div>
 
-          <div class="system-note material-summary" data-system-note aria-live="polite">
+          <div class="system-note material-summary" hidden data-system-note aria-live="polite">
             <div class="summary-main">
               <span class="summary-icon" aria-hidden="true">
                 <svg width="25" height="25" viewBox="0 0 24 24" fill="none">
@@ -4014,7 +3950,7 @@
       </div>
     </section>
 
-    <section id="reviews" class="section review-section" data-section="review-placeholder" data-section-purpose="Launch review section with sample customer-style copy and replacement direction for a real customer quote">
+    <section id="reviews" class="section review-section" hidden data-section="review-placeholder" data-section-purpose="Launch review section with sample customer-style copy and replacement direction for a real customer quote">
       <div class="review-shell">
         <figure class="review-photo">
           <img src="assets/review-stone-coated-couple.png" alt="Older homeowner couple standing in front of a completed stone coated steel roof" loading="lazy" />
