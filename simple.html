@@ -941,14 +941,14 @@
     .receive-section {
       position: relative;
       z-index: 3;
-      padding: 0 0 34px;
+      padding: clamp(46px, 5vw, 68px) 0;
       background:
-        radial-gradient(circle at 50% -30%, rgba(176, 138, 78, 0.08), transparent 34%),
-        linear-gradient(180deg, #fbfaf7 0%, #f8f5ed 100%);
+        radial-gradient(circle at 16% 0%, rgba(176, 138, 78, 0.16), transparent 30%),
+        linear-gradient(135deg, var(--navy-dark), var(--navy));
     }
 
     .receive-section .receive-band {
-      margin-top: -42px;
+      margin-top: 0;
     }
 
     .local-proof .receive-band {
@@ -1325,62 +1325,105 @@
     }
 
     .receive-band {
-      padding: 28px;
+      display: grid;
+      grid-template-columns: minmax(260px, 0.7fr) minmax(0, 1.3fr);
+      gap: clamp(24px, 4vw, 54px);
+      align-items: center;
+      padding: 0;
       color: var(--white);
-      background: linear-gradient(135deg, var(--navy-dark), var(--navy));
-      border-radius: 8px;
-      box-shadow: 0 22px 52px rgba(11, 23, 41, 0.14);
+      background: transparent;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .receive-intro {
+      display: grid;
+      gap: 14px;
+      align-content: center;
     }
 
     .receive-title {
+      color: var(--white);
+      font-family: var(--display);
+      font-size: clamp(2.6rem, 4vw, 4rem);
+      font-weight: 400;
+      line-height: 0.95;
+      text-transform: uppercase;
+    }
+
+    .receive-intro .kicker {
+      margin: 0;
+    }
+
+    .receive-intro p {
+      max-width: 390px;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 0.98rem;
+    }
+
+    .receive-intro .btn {
+      width: max-content;
+      margin-top: 6px;
+    }
+
+    .receive-steps {
       display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      gap: 28px;
+      gap: 14px;
+    }
+
+    .receive-steps-label {
+      display: flex;
+      gap: 14px;
       align-items: center;
-      margin-bottom: 26px;
       color: var(--bronze-light);
       font-size: 0.78rem;
       font-weight: 900;
       letter-spacing: 0.16em;
-      text-align: center;
       text-transform: uppercase;
     }
 
-    .receive-title::before,
-    .receive-title::after {
+    .receive-steps-label::after {
       content: "";
+      flex: 1;
       height: 1px;
       background: rgba(176, 138, 78, 0.62);
     }
 
     .receive-grid {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
       counter-reset: receive-item;
     }
 
     .receive-item {
       counter-increment: receive-item;
-      padding: 0 24px;
-      text-align: center;
-      border-right: 1px solid rgba(255, 255, 255, 0.16);
+      min-height: 172px;
+      padding: 22px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 8px;
+      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
     }
 
-    .receive-item:last-child {
-      border-right: 0;
+    .receive-item:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(176, 138, 78, 0.56);
     }
 
     .receive-icon {
       display: grid;
       place-items: center;
-      width: 44px;
-      height: 44px;
-      margin: 0 auto;
+      width: 38px;
+      height: 38px;
+      margin: 0 0 18px;
       color: var(--bronze-light);
       font-size: 0;
       font-weight: 900;
       line-height: 1;
-      border: 2px solid rgba(176, 138, 78, 0.78);
+      border: 1px solid rgba(176, 138, 78, 0.86);
       border-radius: 50%;
       background: rgba(176, 138, 78, 0.08);
     }
@@ -1392,28 +1435,29 @@
     }
 
     .receive-item h3 {
-      margin-top: 14px;
+      margin-top: 0;
       color: var(--white);
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 1.2rem;
-      line-height: 1.15;
+      font-family: var(--body);
+      font-size: 1.04rem;
+      line-height: 1.2;
+      letter-spacing: 0;
     }
 
     .receive-item h3::after {
       content: "";
       display: block;
-      width: 28px;
+      width: 34px;
       height: 3px;
-      margin: 14px auto 0;
+      margin: 14px 0 0;
       background: var(--bronze-light);
     }
 
     .receive-item p {
-      margin: 16px auto 0;
-      max-width: 240px;
+      margin: 14px 0 0;
+      max-width: 290px;
       color: rgba(255, 255, 255, 0.78);
-      font-size: 0.92rem;
-      line-height: 1.55;
+      font-size: 0.9rem;
+      line-height: 1.5;
     }
 
     .proof-location-note {
@@ -2738,6 +2782,7 @@
       .split,
       .material-layout,
       .review-shell,
+      .receive-band,
       .area-grid,
       .contact-grid,
       .answer-band,
@@ -2768,11 +2813,7 @@
 
       .receive-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 26px 0;
-      }
-
-      .receive-item:nth-child(2) {
-        border-right: 0;
+        gap: 12px;
       }
 
       .material-cta {
@@ -3045,25 +3086,11 @@
       }
 
       .receive-band {
-        padding: 22px;
+        padding: 0;
       }
 
       .receive-section {
-        padding: 28px 0 22px;
-      }
-
-      .receive-section .receive-band {
-        margin-top: 0;
-      }
-
-      .receive-title {
-        grid-template-columns: 1fr;
-        gap: 0;
-      }
-
-      .receive-title::before,
-      .receive-title::after {
-        display: none;
+        padding: 42px 0;
       }
 
       .receive-grid {
@@ -3072,15 +3099,13 @@
 
       .receive-item,
       .receive-item:nth-child(2) {
-        padding: 0;
-        border-right: 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.16);
-        padding-bottom: 22px;
+        min-height: 0;
+        padding: 18px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
       }
 
       .receive-item:last-child {
-        border-bottom: 0;
-        padding-bottom: 0;
+        border: 1px solid rgba(255, 255, 255, 0.16);
       }
 
       .service-grid,
@@ -3615,31 +3640,41 @@
       </div>
     </section>
 
-    <section class="receive-section" data-section="estimate-deliverables" data-section-purpose="Roof check deliverables shown immediately after the hero">
+    <section class="receive-section" hidden data-section="estimate-deliverables" data-section-purpose="Roof check deliverables shown immediately after the hero">
       <div class="container">
         <div class="receive-band">
-          <div class="receive-title">What you receive</div>
-          <div class="receive-grid">
+          <div class="receive-intro">
+            <p class="kicker">After you request</p>
+            <h2 class="receive-title">What happens before the estimate.</h2>
+            <p>
+              A better roof appointment starts with context. Trust Built documents the issue, checks the full roof system, and gives you a clear next step.
+            </p>
+            <a class="btn" href="#contact">Start my roof estimate -&gt;</a>
+          </div>
+          <div class="receive-steps">
+            <div class="receive-steps-label">What you receive</div>
+            <div class="receive-grid">
             <div class="receive-item">
               <div class="receive-icon">â–£</div>
-              <h3>Roof Details Documented</h3>
-              <p>Roof photos tied to the actual issue, so you can see what we see.</p>
+              <h3>Send Photos Or Describe The Issue</h3>
+              <p>Tell us what you are seeing so the appointment starts with real context.</p>
             </div>
             <div class="receive-item">
               <div class="receive-icon">â˜‘</div>
-              <h3>Repair vs. Replacement</h3>
-              <p>Urgent fixes are separated from full replacement recommendations.</p>
+              <h3>We Check The Roof System</h3>
+              <p>Shingles, flashing, ventilation, penetrations, and vulnerable areas get reviewed.</p>
             </div>
             <div class="receive-item">
               <div class="receive-icon">â˜‚</div>
-              <h3>Plan Of Action Tailored To Client Needs</h3>
-              <p>Materials, scope, timing, and priorities are matched to the home.</p>
+              <h3>Repair Vs. Replacement Guidance</h3>
+              <p>Clear options are separated from pressure, guesswork, and unnecessary scope.</p>
             </div>
             <div class="receive-item">
               <div class="receive-icon">âŒ–</div>
-              <h3>Clear Next Steps</h3>
-              <p>Know what needs attention now, what can wait, and what the next move costs.</p>
+              <h3>You Know The Next Step</h3>
+              <p>What needs attention now, what can wait, and what the estimate should cover.</p>
             </div>
+          </div>
           </div>
         </div>
       </div>
@@ -3687,26 +3722,26 @@
               <div class="report-focus" aria-live="polite">
                 <strong data-report-focus-number>1</strong>
                 <div>
-                  <b data-report-focus-title>Roof Details Documented</b>
+                  <b data-report-focus-title>Roof System Checked</b>
                   <span data-report-focus-body>Penetrations, flashing, valleys, ridge caps, and vulnerable areas are photographed so the recommendation is visible.</span>
                 </div>
               </div>
 
               <ul class="report-list">
                 <li data-step="1" data-report-choice="photos" class="is-active" tabindex="0" role="button" aria-pressed="true">
-                  <div><b>Roof Details Documented</b><span>Penetrations, flashing, valleys, ridge caps, and vulnerable areas photographed.</span></div>
+                  <div><b>Roof System Checked</b><span>Penetrations, flashing, valleys, ridge caps, and vulnerable areas photographed.</span></div>
                   <strong class="report-tag">30+ photos</strong>
                 </li>
                 <li data-step="2" data-report-choice="repair" tabindex="0" role="button" aria-pressed="false">
-                  <div><b>Repair vs. Replacement</b><span>Urgent repairs are separated from long-term planning.</span></div>
+                  <div><b>Repair Vs. Replacement Guidance</b><span>Urgent repairs are separated from long-term planning.</span></div>
                   <strong class="report-tag">Repair first</strong>
                 </li>
                 <li data-step="3" data-report-choice="tailored" tabindex="0" role="button" aria-pressed="false">
-                  <div><b>Plan Of Action Tailored To Client Needs</b><span>Material, ventilation, repair scope, and budget priorities are matched to the home.</span></div>
+                  <div><b>Options Matched To The Home</b><span>Material, ventilation, repair scope, and budget priorities are matched to the home.</span></div>
                   <strong class="report-tag">Tailored plan</strong>
                 </li>
                 <li data-step="4" data-report-choice="next" tabindex="0" role="button" aria-pressed="false">
-                  <div><b>Clear Next Steps</b><span>You will know whether to repair, monitor, or replace.</span></div>
+                  <div><b>Next Step Confirmed</b><span>You will know whether to repair, monitor, or replace.</span></div>
                   <strong class="report-tag">Next steps</strong>
                 </li>
               </ul>
@@ -3720,22 +3755,22 @@
           <div class="receive-grid">
             <div class="receive-item">
               <div class="receive-icon">▣</div>
-              <h3>Roof Details Documented</h3>
+              <h3>Send Photos Or Describe The Issue</h3>
               <p>Roof photos tied to the actual issue, so you can see what we see.</p>
             </div>
             <div class="receive-item">
               <div class="receive-icon">☑</div>
-              <h3>Repair vs. Replacement</h3>
+              <h3>We Check The Roof System</h3>
               <p>Urgent fixes are separated from full replacement recommendations.</p>
             </div>
             <div class="receive-item">
               <div class="receive-icon">☂</div>
-              <h3>Plan Of Action Tailored To Client Needs</h3>
+              <h3>Repair Vs. Replacement Guidance</h3>
               <p>Materials, scope, timing, and priorities are matched to the home.</p>
             </div>
             <div class="receive-item">
               <div class="receive-icon">⌖</div>
-              <h3>Clear Next Steps</h3>
+              <h3>You Know The Next Step</h3>
               <p>Know what needs attention now, what can wait, and what the next move costs.</p>
             </div>
           </div>
@@ -4668,7 +4703,7 @@
       var reportData = {
         photos: {
           number: "1",
-          title: "Roof Details Documented",
+          title: "Roof System Checked",
           body: "Penetrations, flashing, valleys, ridge caps, and vulnerable areas are photographed so the recommendation is visible.",
           image: "assets/trust-built-completed-roof.webp",
           alt: "Completed roof condition photo with annotated roof details",
@@ -4676,7 +4711,7 @@
         },
         repair: {
           number: "2",
-          title: "Repair vs. Replacement",
+          title: "Repair Vs. Replacement Guidance",
           body: "Urgent fixes are separated from replacement planning so the appointment does not turn into a forced replacement pitch.",
           image: "assets/trust-built-pipe-boot-detail.webp",
           alt: "Close roof repair detail used to explain a repair-first recommendation",
@@ -4684,7 +4719,7 @@
         },
         tailored: {
           number: "3",
-          title: "Plan Of Action Tailored To Client Needs",
+          title: "Options Matched To The Home",
           body: "The estimate connects materials, ventilation, repair scope, and timing to the homeowner's roof condition, budget, and long-term goals.",
           image: "assets/trust-built-roof-jobsite.webp",
           alt: "Roofing jobsite photo used to explain a tailored roof system plan",
@@ -4692,7 +4727,7 @@
         },
         next: {
           number: "4",
-          title: "Clear Next Steps",
+          title: "Next Step Confirmed",
           body: "The homeowner leaves knowing whether to repair, monitor, or plan replacement before any work is scheduled.",
           image: "assets/trust-built-roof-jobsite.webp",
           alt: "Roof jobsite photo used to explain next steps before work is scheduled",
